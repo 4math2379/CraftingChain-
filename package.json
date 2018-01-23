@@ -8,7 +8,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "anvil-cli": "./bin/anvil-clip"
+    "anvil": "./index.js"
   },
   "keywords": [
     "git",
@@ -20,6 +20,8 @@
     "chalk": "^2.3.0",
     "clear": "0.0.1",
     "clui": "^0.3.6",
+    "colors": "^1.1.2",
+    "commander": "^2.13.0",
     "figlet": "^1.2.0",
     "github": "^13.1.0",
     "inquirer": "^5.0.1",
