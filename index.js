@@ -26,7 +26,7 @@ var inquirer = require('inquirer');
 //intro
 clear();
 console.log(
-    chalk.red(
+    chalk.green(
 	figlet.textSync('A n v i l', {
 	    horyzontalLayout: 'full'
 	
@@ -51,13 +51,18 @@ programm
     .option('-o, --open', 'opened')
     .option('-help, --help', 'help')
     .option('-l, --login', 'login')
+    .option('-m, --miner', 'miner')
     .parse(process.argv);
 
-console.log('command usedh:');
+console.log('BLOCKCHAIN1O1 TECH');
 if (programm.push) console.log('  - pushed'.green);
 if (programm.open) console.log('opened'.green);
 
 //log interface
+
+
+
+
 
 
 
@@ -81,9 +86,18 @@ var questions = [
     
     
 	return val.toLowerCase();
-    
-    
     }
+    
+    },
+    
+{
+    type:'confirm',
+    name: 'mining',
+    message:' Start Mining ?',
+    default: true
+
+
+
     
 
 
@@ -107,6 +121,20 @@ if (programm.login) inquirer.prompt (questions).then (function (answers) {
     console.log(JSON.stringify(answers, null, ' '));
 
 });
+
+
+
+if (programm.miner) inquirer.prompt (questions).then (function (answers) {
+
+
+
+//repair
+
+
+});
+
+
+
 
 
 
