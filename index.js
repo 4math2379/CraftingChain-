@@ -26,8 +26,8 @@ var inquirer = require('inquirer');
 //intro
 clear();
 console.log(
-    chalk.green(
-	figlet.textSync('A n v i l', {
+    chalk.red(
+	figlet.textSync('Dungeon Term', {
 	    horyzontalLayout: 'full'
 	
 	})
@@ -52,13 +52,16 @@ programm
     .option('-help, --help', 'help')
     .option('-l, --login', 'login')
     .option('-m, --miner', 'miner')
+    .option('-c, --class', 'class')
     .parse(process.argv);
 
-console.log('BLOCKCHAIN1O1 TECH');
+console.log('RPG in a Term');
 if (programm.push) console.log('  - pushed'.green);
 if (programm.open) console.log('opened'.green);
 
-//log interface
+//log  des class donc crer des options
+
+
 
 
 
@@ -74,14 +77,14 @@ var questions = [
 {
     type:'input',
     name:'email',
-    message:'Please enter your Email',
+    message:'Please enter your Email in order to save your journey',
     default: false
     },
 {
     type:'list',
-    name:'activities',
-    message:'What is your role ?',
-    choices: ['Hobbyist','Developer','Designer'],
+    name:'Class',
+    message:'Choose a class:',
+    choices: ['Cleric','Rogue','Warrior','Wizard'],
     filter: function (val) {
     
     
@@ -93,7 +96,7 @@ var questions = [
 {
     type:'confirm',
     name: 'mining',
-    message:' Start Mining ?',
+    message:' Ready ?',
     default: true
 
 
@@ -107,6 +110,16 @@ var questions = [
 
 
 }];
+
+
+
+//spec des class 
+
+
+
+
+
+
 
 
 if (programm.login) inquirer.prompt (questions).then (function (answers) {
