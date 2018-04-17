@@ -124,12 +124,8 @@ var questions = [
 
 if (programm.login) inquirer.prompt (questions).then (function (answers) {
 
-
-
-
-
-
-
+   
+    
     console.log('\nYour information:');
     console.log(JSON.stringify(answers, null, ' '));
 

@@ -1,5 +1,5 @@
-var Migrations = artifacts.require("/Migrations");
+var Dungeon = artifacts.require("Dungeon");
 
 module.exports = function(deployer) {
-  deployer.deploy(Migrations);
+  deployer.deploy(Dungeon);
 };
