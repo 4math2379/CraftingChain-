@@ -1,0 +1,41 @@
+[{
+    "id":0,
+    "name":"Rogue",
+    "race":"Gobelin",
+    "location": "The Underground",
+    "equipment": [
+        {"weapon":"dagger"},
+        {"trinket":"lockpicks"},
+        {"special":"poison"},
+        {"consumable":"Healing potion"}]
+    
+
+},
+
+
+{
+    "id":1,
+    "name":"Cleric",
+    "race":"Human",
+    "location": "Temple",
+    
+},
+
+
+{
+    "id":2,
+    "name":"Warrior",
+    "race": "Elf",
+    "location":"Mountain forest"
+
+
+
+}
+
+
+
+
+
+
+
+]
