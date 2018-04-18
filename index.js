@@ -17,56 +17,6 @@ var inquirer = require('inquirer');
 
 
 
-App = {
-    web3Provider: null,
-    contracts: {},
-
-
-
-
-
-/*spec des classes*/
-
-init:function () {
-    // Load pets.
-    $.getJSON('class.json', function(data) {
-        var classRow = $('#classRow');
-      var classTemplate = $('#classTemplate');
-
-      for (i = 0; i < data.length; i ++) {
-        classTemplate.find('.panel-name').text(data[i].name);
-        classTemplate.find('.class-race').text(data[i].race);
-        classTemplate.find('.class-equipment').text(data[i].equipment);
-        classTemplate.find('.class-location').text(data[i].location);
-        classTemplate.find('.class-picked').attr('data-id', data[i].id);
-
-        classRow.append(classTemplate.JSON());
-      }
-    });
-
-    return App.initWeb3();
-  },
-
-
-  initWeb3: function() {
-    // Is there an injected web3 instance?
-    if (typeof web3 !== 'undefined') {
-      App.web3Provider = web3.currentProvider;
-    } else {
-      // If no injected web3 instance is detected, fall back to Ganache
-      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
-    }
-    web3 = new Web3(App.web3Provider);
-    
-        return App.initContract();
-      };
-
-
-
-      //CORRIGER L'ARRAY WEB3
-
-
-
 
 //build
 //intro
@@ -190,17 +140,6 @@ if (programm.miner) inquirer.prompt (questions).then (function (answers) {
 
 
 
-
-
-
-
-};
-
-$(function() {
-    $(window).load(function() {
-      App.init();
-    });
-  });
 
 
 
