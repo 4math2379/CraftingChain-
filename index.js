@@ -14,7 +14,6 @@ var files = require('./lib/lib');
 var programm = require('commander');
 var colors = require('colors');
 var inquirer = require('inquirer');
-//var character =   require('./class.json')
 
 
 
@@ -144,6 +143,24 @@ var questions = [
 
 
 
+
+
+//var loading = require('./loading.js');
+
+
+if (programm.class) inquirer.prompt (questions).then (function (answers) {
+
+   
+    
+    console.log('\nYour information:');
+    console.log(JSON.stringify(answers, null, ' '));
+    //module.exports = loading;
+
+
+});
+
+
+
 var character =  
     
 {
@@ -168,19 +185,6 @@ var character =
 
 };
 
-//var loading = require('./loading.js');
-
-
-if (programm.class) inquirer.prompt (questions).then (function (answers) {
-
-   
-    
-    console.log('\nYour information:');
-    console.log(JSON.stringify(answers, null, ' '));
-    //module.exports = loading;
-
-
-});
 
 
 
@@ -194,24 +198,13 @@ if (programm.class) inquirer.prompt (questions).then (function (answers) {
 
 
 
-// if (programm.class) inquirer.prompt (questions).then (function (answers) {
-//     orcs = character.race.orcs;
-
-    
-//     console.log('You are a ' + character.race.orcs);
-    
-
-//     });
 
 
 
-    //if (inquirer.answers) is == (questions.type.choices('Cleric').then  (console.log("test cleric ok "))
-
- //if (programm.class('Cleric')) inquirer.prompt (questions).then (function (answers){
 
 
 
- //});
+
 
 
 
