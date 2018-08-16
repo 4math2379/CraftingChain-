@@ -65,7 +65,7 @@ var silver = [CR + 10, conduc + 30, decay + 10, entangle + 10, flav + 3,
 
 
 
-
+//finish other ressources.
 
 
 
@@ -82,6 +82,7 @@ var silver = [CR + 10, conduc + 30, decay + 10, entangle + 10, flav + 3,
 
 var craftAbilities = 1;
 var inteligence = 10;
+var harvestAbilities = 1;
 
 
 
