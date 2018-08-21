@@ -1,26 +1,30 @@
-#  CRAFTINGCHAIN`
 
-##  Blockchain  game conerning havesting ressources and craft epic object with it.
+
+![alt text](https://i.imgur.com/mmyGtRd.png) 
+
+
+##  Blockchain  game conerning havesting resources and craft epic object with it.
 
 
 ### Roadmap for the game
 
 1. **Professions and location need to be implemented.**
-2. **Game Ressource has been created**
+2. **Game resources has been created**.
 3. **Choose a blockchain to use it ( *NEO or ETH*)**
-4. *Finish the Readme (**MD**)*.
+4. *Finish the Readme*.
 5. **NO LEVEL TO EVOLVE IN THE GAME**
 6. **Create inventory**
+7. 20 August 2017 moved to truffle Framework.
 
 
 # Professions
 ## Harvester
-This class consist to harvest ressources. more Harvester **ablities** the *Harvester* have more he can succes to 
-have the best ressources.
+This class consist to harvest resources. more Harvester **ablities**, more  the *Harvester* can succes to 
+have the best resources.
 ```javascript
 harvestingTool
 ``` 
-| Tool           | Ressources type| Bonus |
+| Tool           | resources type| Bonus |
 | ---------------|:--------------:| -----:|
 | Mining facility| Common         |   + 0 |
 | Neofactory     | Rare           |   + 1 |
@@ -54,7 +58,7 @@ harvestBronzeAction();
 
  ```
 
-## Coming Soon : Crafter and Ressources type.
+## Coming Soon : Crafter and resources type.
 
 
 
