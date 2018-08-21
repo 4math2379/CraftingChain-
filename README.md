@@ -10,16 +10,17 @@
 
 1. **Professions and location need to be implemented.**
 2. **Game resources has been created**.
-3. **Choose a blockchain to use it ( *NEO or ETH*)**
+3. ~~Choose a blockchain to use it~~
 4. *Finish the Readme*.
 5. **NO LEVEL TO EVOLVE IN THE GAME**
 6. **Create inventory**
-7. 20 August 2017 moved to truffle Framework.
+7. **20 August 2018 moved to truffle Framework.**
 
 
-# Professions
+
+# How to:
 ## Harvester
-This class consist to harvest resources. more Harvester **ablities**, more  the *Harvester* can succes to 
+This asset consist to harvest resources. more Harvester got **ablities**, more  the *Harvester* can succes to 
 have the best resources.
 ```javascript
 harvestingTool
@@ -27,7 +28,7 @@ harvestingTool
 | Tool           | resources type| Bonus |
 | ---------------|:--------------:| -----:|
 | Mining facility| Common         |   + 0 |
-| Neofactory     | Rare           |   + 1 |
+| Factory        | Rare           |   + 1 |
 | Mining stations| Exceptional    |    +2 |
  
 

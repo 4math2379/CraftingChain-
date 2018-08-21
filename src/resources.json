@@ -1,0 +1,25 @@
+[
+  {
+    "id": 0,
+    "name": "Bronze",
+    "picture": "images/",
+    "rarity": "common",
+    "location": "Ground mine"
+  },
+  {
+    "id": 1,
+    "name": "Silver",
+    "picture": "images/",
+    "rarity": "common",
+    "location": "Ground mine"
+  },
+  {
+    "id": 1,
+    "name": "Adamantium",
+    "picture": "images/",
+    "rarity": "Rare",
+    "location": "Ground mine forest"
+  }
+  
+  
+]
