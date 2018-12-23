@@ -12,13 +12,13 @@
      console.log(pickedRessources);
 
      if (pickedRessources == 1) {
-         console.log("you craked Adamantium , stats is " + adamantium)
+         console.log("you craked Adamantium , stats is " )
          
      } else if (pickedRessources == 2) {
-        console.log("you craked Silver , stats is " + silver)
+        console.log("you craked Silver , stats is " )
 
      } else {
-        console.log("you craked Bronze , stats is " + bronze)
+        console.log("you craked Bronze , stats is " )
      }
     
 

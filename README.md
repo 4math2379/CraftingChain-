@@ -25,7 +25,7 @@ have the best resources.
 ```javascript
 harvestingTool
 ``` 
-| Tool           | resources type| Bonus |
+| Tool           | resources type| Bonus  |
 | ---------------|:--------------:| -----:|
 | Mining facility| Common         |   + 0 |
 | Factory        | Rare           |   + 1 |

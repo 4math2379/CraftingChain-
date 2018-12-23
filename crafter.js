@@ -34,3 +34,10 @@ const crafter1 = new Harvester('Saulot',"BER13", 1);
 
 console.log(crafter1.harvest());
 console.log(crafter1.greet());
+
+
+
+let playerX = Harvester;
+let playerY = Crafter;
+
+console.log(playerX, playerY);

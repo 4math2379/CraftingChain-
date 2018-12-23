@@ -2,24 +2,32 @@
   {
     "id": 0,
     "name": "Bronze",
-    "picture": "images/",
+    "picture": "images/resources.jpg",
     "rarity": "common",
     "location": "Ground mine"
   },
   {
     "id": 1,
     "name": "Silver",
-    "picture": "images/",
+    "picture": "images/resources.jpg",
     "rarity": "common",
     "location": "Ground mine"
   },
   {
-    "id": 1,
+    "id": 2,
     "name": "Adamantium",
-    "picture": "images/",
+    "picture": "images/resources.jpg",
     "rarity": "Rare",
     "location": "Ground mine forest"
+  },
+  {
+    "id": 3,
+    "name": "Gravitronic Fiberblast",
+    "picture": "images/resources.jpg",
+    "rarity": "Rare",
+    "location": "Underground Sea"
   }
+
   
   
 ]

@@ -23,29 +23,51 @@ App = {
   },
 
   initWeb3: function() {
-    /*
-     * Replace me...
-     */
+    if (typeof web3 !== 'undefined') {
+      App.web3Provider = web3.currentProvider;
+    } else {
+
+      App.web3Provider = new Web3.providers.HttpProvider('http://127.0.0.1:7545');
+    }
+    web3 = new Web3(App.web3Provider);
 
     return App.initContract();
   },
 
   initContract: function() {
-    /*
-     * Replace me...
-     */
+    $.getJSON('Harvest.json', function(data) {
+
+      var HarvestArtifact = data;
+      App.contracts.Harvest = TruffleContract(HarvestArtifact);
+    
+      App.contracts.Harvest.setProvider(App.web3Provider);
+    
+      return App.markSampled();
+    });
 
     return App.bindEvents();
   },
 
   bindEvents: function() {
-    $(document).on('click', '.btn-sample', App.handlesample);
+    $(document).on('click', '.btn-sample', App.handleSample);
   },
 
-  markSampled: function(harvester, account) {
-    /*
-     * Replace me...
-     */
+  markSampled: function( harvester , account) {
+    var harvestInstance;
+
+App.contracts.Harvest.deployed().then(function(instance) {
+  harvestInstance = instance;
+
+  return harvestInstance.getHarvester.call();
+}).then(function(harvester) {
+  for (i = 0; i < harvester.length; i++) {
+    if (harvester[i] !== '0x0000000000000000000000000000000000000000') {
+      $('.panel-resource').eq(i).find('button').text('Success').attr('disabled', true);
+    }
+  }
+}).catch(function(err) {
+  console.log(err.message);
+});
   },
 
   handleSample: function(event) {
@@ -53,9 +75,25 @@ App = {
 
     var resourceId = parseInt($(event.target).data('id'));
 
-    /*
-     * Replace me...
-     */
+    var harvestInstance;
+
+web3.eth.getAccounts(function(error, accounts) {
+  if (error) {
+    console.log(error);
+  }
+
+  var account = accounts[0];
+
+  App.contracts.Harvest.deployed().then(function(instance) {
+    harvestInstance = instance;
+
+    return harvestInstance.sample(resourceId, {from: account});
+  }).then(function(result) {
+    return App.markSampled();
+  }).catch(function(err) {
+    console.log(err.message);
+  });
+});
   }
 
 };
