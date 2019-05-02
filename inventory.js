@@ -1,5 +1,5 @@
 //RETRIEVE USER , PLAYER SPECS
-//let stuff = require('./stuff')
+let stuff = require('./stuff')
 
 //1 build object inventory values and specs
 var inventorySlot = [];
