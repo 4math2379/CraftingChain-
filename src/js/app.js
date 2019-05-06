@@ -23,7 +23,23 @@ App = {
   },
 
   initWeb3: function() {
-    if (typeof web3 !== 'undefined') {
+    //update modern dapps 
+    if (window.ethereum) {
+    
+    App.web3Provider = window.ethereum;
+    try {
+      await.window.ethereum.enable();
+
+    } catch (error) {
+      console.log("error account denied by user")
+      } 
+
+    }
+
+
+
+
+    else if (typeof web3 !== 'undefined') {
       App.web3Provider = web3.currentProvider;
     } else {
 
