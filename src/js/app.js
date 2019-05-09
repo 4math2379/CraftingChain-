@@ -43,7 +43,8 @@ App = {
       App.web3Provider = web3.currentProvider;
     } else {
 
-      App.web3Provider = new Web3.providers.HttpProvider('http://127.0.0.1:7545');
+      //App.web3Provider = new Web3.providers.HttpProvider('http://127.0.0.1:7545');
+      App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/583c67d6aae34e3794a8b5fd9009dc93');
     }
     web3 = new Web3(App.web3Provider);
 
