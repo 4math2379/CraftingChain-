@@ -26,8 +26,35 @@
     "picture": "images/resources.jpg",
     "rarity": "Rare",
     "location": "Underground Sea"
+  },
+  {
+    "id": 4,
+    "name": "Phrik Aluminium",
+    "picture": "images/resources.jpg",
+    "rarity": "Rare",
+    "location": "Volcano sites"
+  } ,
+  {
+    "id": 5,
+    "name": "Diamond",
+    "picture": "images/resources.jpg",
+    "rarity": "Rare",
+    "location": "Underground Sea"
+  },
+  {
+    "id": 6,
+    "name": "Solonium Gas",
+    "picture": "images/resources.jpg",
+    "rarity": "Rare",
+    "location": "Underground Volcanic sites"
+  },
+  {
+    "id": 7,
+    "name": "Liquid Steel",
+    "picture": "images/resources.jpg",
+    "rarity": "Rare",
+    "location": "unknown"
   }
-
   
   
 ]
