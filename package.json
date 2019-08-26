@@ -32,6 +32,7 @@
     "rxjs": "^6.2.2",
     "simple-git": "^1.96.0",
     "solhint": "^1.2.1",
+    "sweetalert2": "^8.14.0",
     "touch": "^3.1.0",
     "truffle": "^4.1.15",
     "zeppelin-solidity": "^1.12.0"
