@@ -1,5 +1,5 @@
 // solium-disable linebreak-style
-pragma solidity ^0.4.17;
+pragma solidity >=0.4.21 <0.6.0;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";

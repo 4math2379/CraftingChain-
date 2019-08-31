@@ -24,7 +24,7 @@ App = {
 
   initWeb3: function() {
     //update modern dapps 
-    if (window.ethereum) {
+    /*if (window.ethereum) {
     
     App.web3Provider = window.ethereum;
     try {
@@ -34,18 +34,28 @@ App = {
       console.log("error account denied by user")
       } 
 
-    }
+    }*/
+
+
+    function signPayment(recipient, amount, nonce, contractAddress, callback) {
+      var hash = "0x" + abi.soliditySHA3(
+          ["address", "uint256", "uint256", "address"],
+          [recipient, amount, nonce, contractAddress]
+      ).toString("hex");
+  
+      web3.eth.personal.sign(hash, web3.eth.defaultAccount, callback);
+  }
 
 
 
 
-    else if (typeof web3 !== 'undefined') {
+     if (typeof web3 !== 'undefined') {
       App.web3Provider = web3.currentProvider;
       web3  =new Web3(app.web3Provider);
     } else {
 
-      App.web3Provider = new Web3.providers.HttpProvider('http://127.0.0.1:7545');
-      //App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/583c67d6aae34e3794a8b5fd9009dc93');
+      //App.web3Provider = new Web3.providers.HttpProvider('http://127.0.0.1:7545');
+      App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/583c67d6aae34e3794a8b5fd9009dc93');
     }
     web3 = new Web3(App.web3Provider);
 
