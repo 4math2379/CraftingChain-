@@ -54,21 +54,21 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"resourceId\",\"type\":\"uint256\"}],\"name\":\"sample\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"harvester\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getHarvester\",\"outputs\":[{\"name\":\"\",\"type\":\"address[16]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/jonat/Documents/GitHub/CraftingChain-/contracts/Harvest.sol\":\"Harvest\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/jonat/Documents/GitHub/CraftingChain-/contracts/Harvest.sol\":{\"keccak256\":\"0x874064c4cc7b6b3162fbc22b63fc3c2cd3b1d8910b0b8b813dd514523ce339b7\",\"urls\":[\"bzzr://13d4f979c4a7f90d62fe09fd569b7cb3b2759ab02e9e554f567960ade20f8e49\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b506102f4806100206000396000f3fe608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806310fa18781461005c57806323af821d146100ab5780635426cb2b14610126575b600080fd5b34801561006857600080fd5b506100956004803603602081101561007f57600080fd5b8101908080359060200190929190505050610179565b6040518082815260200191505060405180910390f35b3480156100b757600080fd5b506100e4600480360360208110156100ce57600080fd5b81019080803590602001909291905050506101ee565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561013257600080fd5b5061013b610223565b6040518082601060200280838360005b8381101561016657808201518184015260208101905061014b565b5050505090500191505060405180910390f35b600080821015801561018c5750600f8211155b151561019757600080fd5b336000836010811015156101a757fe5b0160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550819050919050565b6000816010811015156101fd57fe5b016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b61022b6102a4565b600060108060200260405190810160405280929190826010801561029a576020028201915b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019060010190808311610250575b5050505050905090565b6102006040519081016040528060109060208202803883398082019150509050509056fea165627a7a723058203953896a33403e6521f4c42fd02fb488bc86428837856bf6eb9bf7e02528378e0029",
-  "deployedBytecode": "0x608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806310fa18781461005c57806323af821d146100ab5780635426cb2b14610126575b600080fd5b34801561006857600080fd5b506100956004803603602081101561007f57600080fd5b8101908080359060200190929190505050610179565b6040518082815260200191505060405180910390f35b3480156100b757600080fd5b506100e4600480360360208110156100ce57600080fd5b81019080803590602001909291905050506101ee565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561013257600080fd5b5061013b610223565b6040518082601060200280838360005b8381101561016657808201518184015260208101905061014b565b5050505090500191505060405180910390f35b600080821015801561018c5750600f8211155b151561019757600080fd5b336000836010811015156101a757fe5b0160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550819050919050565b6000816010811015156101fd57fe5b016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b61022b6102a4565b600060108060200260405190810160405280929190826010801561029a576020028201915b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019060010190808311610250575b5050505050905090565b6102006040519081016040528060109060208202803883398082019150509050509056fea165627a7a723058203953896a33403e6521f4c42fd02fb488bc86428837856bf6eb9bf7e02528378e0029",
-  "sourceMap": "71:1586:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;71:1586:0;;;;;;;",
-  "deployedSourceMap": "71:1586:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;134:195;;8:9:-1;5:2;;;30:1;27;20:12;5:2;134:195:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;134:195:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;97:28;;8:9:-1;5:2;;;30:1;27;20:12;5:2;97:28:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;97:28:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;552:102;;8:9:-1;5:2;;;30:1;27;20:12;5:2;552:102:0;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;552:102:0;;;;;;;;;;;;;;;;134:195;183:4;222:1;208:10;:15;;:35;;;;;241:2;227:10;:16;;208:35;200:44;;;;;;;;281:10;257:9;267:10;257:21;;;;;;;;;;;:34;;;;;;;;;;;;;;;;;;311:10;304:17;;134:195;;;:::o;97:28::-;;;;;;;;;;;;;;;;;;;;;;;;;:::o;552:102::-;597:18;;:::i;:::-;635:9;628:16;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;552:102;:::o;71:1586::-;;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;148:4;140:6;136:17;126:27;;0:157;71:1586:0;;;;:::o",
-  "source": "// solium-disable linebreak-style\r\npragma solidity >=0.4.21 <0.6.0;\r\n\r\ncontract Harvest {\r\n\r\n    address[16] public harvester;\r\n\r\n    function sample(uint resourceId) public returns (uint) {\r\n        require(resourceId >= 0 && resourceId <= 15);\r\n\r\n        harvester[resourceId] = msg.sender;\r\n\r\n        return resourceId;\r\n    }\r\n\r\n\r\n\r\n\r\n\r\n//rajout en sol 0.5 de la mémoire Explicit data location for all variables of struct, \r\n//array or mapping types is now mandatory. This is also applied to function\r\n// parameters and return variables.\r\n\r\n\r\n    function getHarvester() public view returns (address[16] memory) {\r\n        return harvester;\r\n\r\n    }\r\n\r\n    function splitSignature(bytes memory sig)\r\n        internal\r\n        pure\r\n        returns (uint8 v, bytes32 r, bytes32 s)\r\n    {\r\n        require(sig.length == 65);\r\n\r\n        assembly {\r\n            // first 32 bytes, after the length prefix.\r\n            r := mload(add(sig, 32))\r\n            // second 32 bytes.\r\n            s := mload(add(sig, 64))\r\n            // final byte (first byte of the next 32 bytes).\r\n            v := byte(0, mload(add(sig, 96)))\r\n        }\r\n\r\n        return (v, r, s);\r\n    }\r\n\r\n    function recoverSigner(bytes32 message, bytes memory sig)\r\n        internal\r\n        pure\r\n        returns (address)\r\n    {\r\n        (uint8 v, bytes32 r, bytes32 s) = splitSignature(sig);\r\n\r\n        return ecrecover(message, v, r, s);\r\n    }\r\n\r\n    /// builds a prefixed hash to mimic the behavior of eth_sign.\r\n    function prefixed(bytes32 hash) internal pure returns (bytes32) {\r\n        return keccak256(abi.encodePacked(\"\\x19Ethereum Signed Message:\\n32\", hash));\r\n    }\r\n}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"resourceId\",\"type\":\"uint256\"}],\"name\":\"sample\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"harvester\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getHarvester\",\"outputs\":[{\"name\":\"\",\"type\":\"address[16]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/jonat/Documents/GitHub/CraftingChain-/contracts/Harvest.sol\":\"Harvest\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/jonat/Documents/GitHub/CraftingChain-/contracts/Harvest.sol\":{\"keccak256\":\"0xfa7a815b9cc035cabb74c8b04f558ff61d2f871d15bdd49b59c8e0ef1f113870\",\"urls\":[\"bzzr://fe638b2597050fa88d1fe0c301844dff6e9488727f9129d5ff981be9b5c51b78\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506102f4806100206000396000f3fe608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806310fa18781461005c57806323af821d146100ab5780635426cb2b14610126575b600080fd5b34801561006857600080fd5b506100956004803603602081101561007f57600080fd5b8101908080359060200190929190505050610179565b6040518082815260200191505060405180910390f35b3480156100b757600080fd5b506100e4600480360360208110156100ce57600080fd5b81019080803590602001909291905050506101ee565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561013257600080fd5b5061013b610223565b6040518082601060200280838360005b8381101561016657808201518184015260208101905061014b565b5050505090500191505060405180910390f35b600080821015801561018c5750600f8211155b151561019757600080fd5b336000836010811015156101a757fe5b0160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550819050919050565b6000816010811015156101fd57fe5b016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b61022b6102a4565b600060108060200260405190810160405280929190826010801561029a576020028201915b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019060010190808311610250575b5050505050905090565b6102006040519081016040528060109060208202803883398082019150509050509056fea165627a7a72305820a3682de66f2319d6cd00fbad16d6dd0940ce2976e7658928fabc547874e8bbf90029",
+  "deployedBytecode": "0x608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806310fa18781461005c57806323af821d146100ab5780635426cb2b14610126575b600080fd5b34801561006857600080fd5b506100956004803603602081101561007f57600080fd5b8101908080359060200190929190505050610179565b6040518082815260200191505060405180910390f35b3480156100b757600080fd5b506100e4600480360360208110156100ce57600080fd5b81019080803590602001909291905050506101ee565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561013257600080fd5b5061013b610223565b6040518082601060200280838360005b8381101561016657808201518184015260208101905061014b565b5050505090500191505060405180910390f35b600080821015801561018c5750600f8211155b151561019757600080fd5b336000836010811015156101a757fe5b0160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550819050919050565b6000816010811015156101fd57fe5b016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b61022b6102a4565b600060108060200260405190810160405280929190826010801561029a576020028201915b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019060010190808311610250575b5050505050905090565b6102006040519081016040528060109060208202803883398082019150509050509056fea165627a7a72305820a3682de66f2319d6cd00fbad16d6dd0940ce2976e7658928fabc547874e8bbf90029",
+  "sourceMap": "71:371:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;71:371:0;;;;;;;",
+  "deployedSourceMap": "71:371:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;134:195;;8:9:-1;5:2;;;30:1;27;20:12;5:2;134:195:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;134:195:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;97:28;;8:9:-1;5:2;;;30:1;27;20:12;5:2;97:28:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;97:28:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;335:102;;8:9:-1;5:2;;;30:1;27;20:12;5:2;335:102:0;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;335:102:0;;;;;;;;;;;;;;;;134:195;183:4;222:1;208:10;:15;;:35;;;;;241:2;227:10;:16;;208:35;200:44;;;;;;;;281:10;257:9;267:10;257:21;;;;;;;;;;;:34;;;;;;;;;;;;;;;;;;311:10;304:17;;134:195;;;:::o;97:28::-;;;;;;;;;;;;;;;;;;;;;;;;;:::o;335:102::-;380:18;;:::i;:::-;418:9;411:16;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;335:102;:::o;71:371::-;;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;148:4;140:6;136:17;126:27;;0:157;71:371:0;;;;:::o",
+  "source": "// solium-disable linebreak-style\r\npragma solidity >=0.4.21 <0.6.0;\r\n\r\ncontract Harvest {\r\n\r\n    address[16] public harvester;\r\n\r\n    function sample(uint resourceId) public returns (uint) {\r\n        require(resourceId >= 0 && resourceId <= 15);\r\n\r\n        harvester[resourceId] = msg.sender;\r\n\r\n        return resourceId;\r\n    }\r\n    function getHarvester() public view returns (address[16] memory) {\r\n        return harvester;\r\n\r\n    }\r\n\r\n}",
   "sourcePath": "C:/Users/jonat/Documents/GitHub/CraftingChain-/contracts/Harvest.sol",
   "ast": {
     "absolutePath": "/C/Users/jonat/Documents/GitHub/CraftingChain-/contracts/Harvest.sol",
     "exportedSymbols": {
       "Harvest": [
-        111
+        43
       ]
     },
-    "id": 112,
+    "id": 44,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -91,9 +91,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 111,
+        "id": 43,
         "linearizedBaseContracts": [
-          111
+          43
         ],
         "name": "Harvest",
         "nodeType": "ContractDefinition",
@@ -103,7 +103,7 @@
             "id": 5,
             "name": "harvester",
             "nodeType": "VariableDeclaration",
-            "scope": 111,
+            "scope": 43,
             "src": "97:28:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -293,10 +293,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        186,
-                        187
+                        118,
+                        119
                       ],
-                      "referencedDeclaration": 186,
+                      "referencedDeclaration": 118,
                       "src": "200:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -379,7 +379,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 183,
+                        "referencedDeclaration": 115,
                         "src": "281:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -506,7 +506,7 @@
               ],
               "src": "182:6:0"
             },
-            "scope": 111,
+            "scope": 43,
             "src": "134:195:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -517,7 +517,7 @@
             "body": {
               "id": 41,
               "nodeType": "Block",
-              "src": "617:37:0",
+              "src": "400:37:0",
               "statements": [
                 {
                   "expression": {
@@ -527,7 +527,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 5,
-                    "src": "635:9:0",
+                    "src": "418:9:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$16_storage",
                       "typeString": "address[16] storage ref"
@@ -536,7 +536,7 @@
                   "functionReturnParameters": 38,
                   "id": 40,
                   "nodeType": "Return",
-                  "src": "628:16:0"
+                  "src": "411:16:0"
                 }
               ]
             },
@@ -552,7 +552,7 @@
               "id": 33,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "573:2:0"
+              "src": "356:2:0"
             },
             "payable": false,
             "returnParameters": {
@@ -565,7 +565,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 42,
-                  "src": "597:18:0",
+                  "src": "380:18:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -577,7 +577,7 @@
                       "id": 34,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "597:7:0",
+                      "src": "380:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -595,7 +595,7 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "605:2:0",
+                      "src": "388:2:0",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": null,
@@ -604,7 +604,7 @@
                       "value": "16"
                     },
                     "nodeType": "ArrayTypeName",
-                    "src": "597:11:0",
+                    "src": "380:11:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$16_storage_ptr",
                       "typeString": "address[16]"
@@ -614,10 +614,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "596:20:0"
+              "src": "379:20:0"
             },
-            "scope": 111,
-            "src": "552:102:0",
+            "scope": 43,
+            "src": "335:102:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public",
@@ -1572,20 +1572,20 @@
             "visibility": "internal"
           }
         ],
-        "scope": 112,
-        "src": "71:1586:0"
+        "scope": 44,
+        "src": "71:371:0"
       }
     ],
-    "src": "35:1622:0"
+    "src": "35:407:0"
   },
   "legacyAST": {
     "absolutePath": "/C/Users/jonat/Documents/GitHub/CraftingChain-/contracts/Harvest.sol",
     "exportedSymbols": {
       "Harvest": [
-        111
+        43
       ]
     },
-    "id": 112,
+    "id": 44,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -1608,9 +1608,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 111,
+        "id": 43,
         "linearizedBaseContracts": [
-          111
+          43
         ],
         "name": "Harvest",
         "nodeType": "ContractDefinition",
@@ -1620,7 +1620,7 @@
             "id": 5,
             "name": "harvester",
             "nodeType": "VariableDeclaration",
-            "scope": 111,
+            "scope": 43,
             "src": "97:28:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1810,10 +1810,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        186,
-                        187
+                        118,
+                        119
                       ],
-                      "referencedDeclaration": 186,
+                      "referencedDeclaration": 118,
                       "src": "200:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1896,7 +1896,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 183,
+                        "referencedDeclaration": 115,
                         "src": "281:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -2023,7 +2023,7 @@
               ],
               "src": "182:6:0"
             },
-            "scope": 111,
+            "scope": 43,
             "src": "134:195:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -2034,7 +2034,7 @@
             "body": {
               "id": 41,
               "nodeType": "Block",
-              "src": "617:37:0",
+              "src": "400:37:0",
               "statements": [
                 {
                   "expression": {
@@ -2044,7 +2044,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 5,
-                    "src": "635:9:0",
+                    "src": "418:9:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$16_storage",
                       "typeString": "address[16] storage ref"
@@ -2053,7 +2053,7 @@
                   "functionReturnParameters": 38,
                   "id": 40,
                   "nodeType": "Return",
-                  "src": "628:16:0"
+                  "src": "411:16:0"
                 }
               ]
             },
@@ -2069,7 +2069,7 @@
               "id": 33,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "573:2:0"
+              "src": "356:2:0"
             },
             "payable": false,
             "returnParameters": {
@@ -2082,7 +2082,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 42,
-                  "src": "597:18:0",
+                  "src": "380:18:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2094,7 +2094,7 @@
                       "id": 34,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "597:7:0",
+                      "src": "380:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -2112,7 +2112,7 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "605:2:0",
+                      "src": "388:2:0",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": null,
@@ -2121,7 +2121,7 @@
                       "value": "16"
                     },
                     "nodeType": "ArrayTypeName",
-                    "src": "597:11:0",
+                    "src": "380:11:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$16_storage_ptr",
                       "typeString": "address[16]"
@@ -2131,10 +2131,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "596:20:0"
+              "src": "379:20:0"
             },
-            "scope": 111,
-            "src": "552:102:0",
+            "scope": 43,
+            "src": "335:102:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public",
@@ -3089,11 +3089,11 @@
             "visibility": "internal"
           }
         ],
-        "scope": 112,
-        "src": "71:1586:0"
+        "scope": 44,
+        "src": "71:371:0"
       }
     ],
-    "src": "35:1622:0"
+    "src": "35:407:0"
   },
   "compiler": {
     "name": "solc",
@@ -3108,7 +3108,7 @@
     }
   },
   "schemaVersion": "3.0.9",
-  "updatedAt": "2019-08-31T00:47:29.985Z",
+  "updatedAt": "2019-09-02T01:55:58.140Z",
   "devdoc": {
     "methods": {}
   },

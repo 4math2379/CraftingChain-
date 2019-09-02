@@ -22,43 +22,27 @@ App = {
     return App.initWeb3();
   },
 
-  initWeb3: function() {
-    //update modern dapps 
-    /*if (window.ethereum) {
-    
-    App.web3Provider = window.ethereum;
-    try {
-      await.window.ethereum.enable();
-
-    } catch (error) {
-      console.log("error account denied by user")
-      } 
-
-    }*/
-
-
-    function signPayment(recipient, amount, nonce, contractAddress, callback) {
-      var hash = "0x" + abi.soliditySHA3(
-          ["address", "uint256", "uint256", "address"],
-          [recipient, amount, nonce, contractAddress]
-      ).toString("hex");
-  
-      web3.eth.personal.sign(hash, web3.eth.defaultAccount, callback);
-  }
-
-
-
-
-     if (typeof web3 !== 'undefined') {
-      App.web3Provider = web3.currentProvider;
-      web3  =new Web3(app.web3Provider);
-    } else {
-
-      //App.web3Provider = new Web3.providers.HttpProvider('http://127.0.0.1:7545');
+  initWeb3: async function() {
+    if (window.ethereum) {
+      App.web3Provider = window.ethereum;
+      try {
+        // Request account access
+        await window.ethereum.enable();
+      } catch (error) {
+        // User denied account access...
+        console.error("User denied account access")
+      }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+      App.web3Provider = window.web3.currentProvider;
+    }
+    // If no injected web3 instance is detected, fall back to Ganache
+    else {
+      //App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
       App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/583c67d6aae34e3794a8b5fd9009dc93');
     }
     web3 = new Web3(App.web3Provider);
-
     return App.initContract();
   },
 
