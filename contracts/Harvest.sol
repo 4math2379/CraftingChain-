@@ -8,52 +8,28 @@ contract Harvest {
     /// @title Harvest is the main contract, harvesting ressource on the chain.
     /// @dev harvesting ressource on the chain
     /// @author Rahma Sinien rahma@blockchain101.fr (https://www.blockchain101.fr)
+address public harvester;
+address public crafter;
+address public adventurer;
 
-    /// address of the account and contract 
-    address[16] public harvester;
-    address[16] public crafter;
-    address[16] public adventurer;
+    /// @dev access modifier of both accounts.
 
-   
-   
-   
-   ///@dev access modifier of both accounts 
-    modifier onlyHarvester(){
+     modifier onlyHarvester()  {
         require(msg.sender == harvester);
+        _;
     }
-
     modifier onlyCrafter() {
         require(msg.sender == crafter);
+        _;
     }
-
     modifier onlyAdventurer() {
         require(msg.sender == adventurer);
+        _;
     }
 
     bool public paused = false;
 
 
-
-
-    ///@dev function of both id 
-
-    function sample(uint resourceId) public returns (uint) {
-        require(resourceId >= 0 && resourceId <= 15);
-
-        harvester[resourceId] = msg.sender;
-
-        return resourceId;
-    }
-    
-
-    function location(uint locationId) public returns (uint) {
-        require(locationId >= 0 && locationId <= 15);
-        
-        harvester[locationId] = msg.sender;
-
-        return locationId;
-        
-    }
 
 
     function getHarvester() public view returns (address[16] memory) {
@@ -107,16 +83,57 @@ event Transfer(address from, address to, uint256 tokenId );
 
 
 
-///@dev this is the struct of each resources 256 bit words.
+///@dev this is the struct of each resources 256 bit words unpack it.
     struct Ressource {
         uint256 overallQuality;
-        uint64 expirationDate;
+        uint64 crackingDate;
         uint32 conductivity;
         uint16 rarity;
+    }
+    Ressource[] ressourceStats;
+
+
+    /// @dev create another struc for the location id.
+
+    struct Location {
+        uint256 forest;
+        uint64 underground;
+        uint32 sea;
+        uint16 moutains;
+    }
+
+    Location[] locations;
+
+
+
+    ///@dev function of both id.
+     function getRessourceId(uint resourceId) public returns (uint, uint) {
+        require(resourceId >= 0 && resourceId <= 15);
+
+        harvester[resourceId] = msg.sender;
+
+        return (ressourceStats[resourceId]);
+
+    }
+
+
+
+    
+
+
+    function getLocation(uint locationId) public returns (uint, uint) {
+        require(locationId >= 0 && locationId <= 15);
+
+        harvester[locationId] = msg.sender;
+
+        return (locations[locationId]);
     }
 
     ///@dev finish the generic stats ressourde from JS files.
 
 }
+
+
+
 
 
