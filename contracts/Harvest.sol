@@ -29,13 +29,8 @@ address public adventurer;
 
     bool public paused = false;
 
+    mapping (address=>address)  harvestersToContract;
 
-
-
-    function getHarvester() public view returns (address[16] memory) {
-        return harvester;
-
-    }
 
 }
 
@@ -74,7 +69,7 @@ contract Ressources is Harvest {
 
 
 /// @dev event for craking the random ressources , the ownner , th type of ressources  and location.
-event CrakedRessources(address harvester, uint256 resourceId, uint256 locationId);
+event CrakedRessources(address harvester, uint256 n, uint256 locationId);
 
 
     /// @dev Transfer event as defined in current draft of ERC721. Emitted every time a kitten
@@ -85,10 +80,10 @@ event Transfer(address from, address to, uint256 tokenId );
 
 ///@dev this is the struct of each resources 256 bit words unpack it.
     struct Ressource {
-        uint256 overallQuality;
-        uint64 crackingDate;
-        uint32 conductivity;
-        uint16 rarity;
+        uint overallQuality;
+        uint crackingDate;
+        uint conductivity;
+        uint rarity;
     }
     Ressource[] ressourceStats;
 
@@ -107,12 +102,13 @@ event Transfer(address from, address to, uint256 tokenId );
 
 
     ///@dev function of both id.
-     function getRessourceId(uint resourceId) public returns (uint, uint) {
-        require(resourceId >= 0 && resourceId <= 15);
+     function getRessourceId(uint n) public view returns (uint, uint) {
 
-        harvester[resourceId] = msg.sender;
-
-        return (ressourceStats[resourceId]);
+     
+     return (ressourceStats[n].crackingDate, 
+             ressourceStats[n].rarity,
+             ressourceStats[n].overallQuality,
+             ressourceStats[n].conductivity);
 
     }
 
