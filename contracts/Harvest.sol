@@ -85,6 +85,65 @@ event Transfer(address from, address to, uint256 tokenId );
         uint conductivity;
         uint rarity;
     }
+
+
+    //
+    ERC721 public nonFungibleContract;
+
+
+    // Cut owner takes on each harvesting, measured in basis points (1/100 of a percent).
+    // Values 0-10,000 map to 0%-100%
+    uint256 public ownerCut;
+
+
+    // map token id
+    mapping (uint256 => Ressource) tokenIdOfRessource;
+
+    event RessourceCreated(uint256 tokenId, uint256 overallQuality, uint256 rarity);
+    event RessourceHarvestedSucess(uint256 tokenId, uint256 conductivity, uint256 crackingDate, address harvester );
+    event RessourceHarvestedFail(uint256 tokenId);
+
+   function _owns(address _claimant, uint256 _tokenId) internal view returns (bool) {
+        return (nonFungibleContract.ownerOf(_tokenId) == _claimant);
+    }
+
+
+     /// @dev Escrows the NFT, assigning ownership to this contract.
+    /// Throws if the escrow fails.
+    /// @param _owner - Current owner address of token to escrow.
+    /// @param _tokenId - ID of token whose approval to verify.
+    function _escrow(address _owner, uint256 _tokenId) internal {
+        // it will throw if transfer fails
+        nonFungibleContract.transferFrom(_owner, address(this), _tokenId);
+    }
+
+    /// @dev Transfers an NFT owned by this contract to another address.
+    /// Returns true if the transfer succeeds.
+    /// @param _receiver - Address to transfer NFT to.
+    /// @param _tokenId - ID of token to transfer.
+    function _transfer(address _receiver, uint256 _tokenId) internal {
+        // it will throw if transfer fails
+        nonFungibleContract.transfer(_receiver, _tokenId);
+    }
+
+    ///  RessourceCreated event.
+    /// @param _tokenId The ID of the token to be put on ressource.
+    /// @param _ressource Auction to add.
+    function _addRessource(uint256 _tokenId, Ressource memory _ressource) internal {
+        require(_ressource.crackingDate >= 1 minutes);
+
+        tokenIdOfRessource[_tokenId] = _ressource;
+
+        emit RessourceCreated(
+            uint256(_tokenId),
+            uint256(_ressource.rarity),
+            uint256(_ressource.overallQuality)
+        );
+    }
+
+
+
+
     Ressource[] ressourceStats;
 
 
@@ -101,29 +160,7 @@ event Transfer(address from, address to, uint256 tokenId );
 
 
 
-    ///@dev function of both id.
-     function getRessourceId(uint n) public view returns (uint, uint) {
 
-     
-     return (ressourceStats[n].crackingDate, 
-             ressourceStats[n].rarity,
-             ressourceStats[n].overallQuality,
-             ressourceStats[n].conductivity);
-
-    }
-
-
-
-    
-
-
-    function getLocation(uint locationId) public returns (uint, uint) {
-        require(locationId >= 0 && locationId <= 15);
-
-        harvester[locationId] = msg.sender;
-
-        return (locations[locationId]);
-    }
 
     ///@dev finish the generic stats ressourde from JS files.
 
