@@ -27,6 +27,15 @@ address public adventurer;
         _;
     }
 
+    modifier onlyPLevel() {
+        require(
+            msg.sender == harvester ||
+            msg.sender == crafter ||
+            msg.sender == adventurer
+        );
+        _;
+    }
+
     bool public paused = false;
 
     mapping (address=>address)  harvestersToContract;
@@ -64,7 +73,7 @@ contract ERC721 {
 
 
 contract Ressources is Harvest {
-/// @title contract for the ressources stats.
+/// @title contract for the ressources.
 /// @author Sinien Rahma blockchain101 , rahma@blockchain101.fr , (https://www.blockchain101.fr)
 
 
@@ -87,6 +96,18 @@ event Transfer(address from, address to, uint256 tokenId );
     }
 
 
+
+    /// @dev create another struc for the location id.
+
+    struct LocationAdd {
+        uint256 forest;
+        uint64 underground;
+        uint32 sea;
+        uint16 position;
+        uint8 locationType;
+    }
+
+
     //
     ERC721 public nonFungibleContract;
 
@@ -98,10 +119,19 @@ event Transfer(address from, address to, uint256 tokenId );
 
     // map token id
     mapping (uint256 => Ressource) tokenIdOfRessource;
+    mapping (uint256 => LocationAdd) tokeniIdOfLocations;
 
     event RessourceCreated(uint256 tokenId, uint256 overallQuality, uint256 rarity);
     event RessourceHarvestedSucess(uint256 tokenId, uint256 conductivity, uint256 crackingDate, address harvester );
     event RessourceHarvestedFail(uint256 tokenId);
+
+
+    // event for the location id so where is it
+    event LocationCreated(uint256 locTokenId, uint256 locationType, uint256 position);
+    event LocExploredSuccess(uint256 locTokenId, uint256 forest , uint256 undeground, uint256 sea,
+    uint256 desert);
+    event LocExploredFailed(uint256 locTokenId);
+
 
    function _owns(address _claimant, uint256 _tokenId) internal view returns (bool) {
         return (nonFungibleContract.ownerOf(_tokenId) == _claimant);
@@ -127,8 +157,8 @@ event Transfer(address from, address to, uint256 tokenId );
     }
 
     ///  RessourceCreated event.
-    /// @param _tokenId The ID of the token to be put on ressource.
-    /// @param _ressource Auction to add.
+    /// @param _tokenId -The ID of the token to be put on ressource.
+    /// @param _ressource - Auction to add.
     function _addRessource(uint256 _tokenId, Ressource memory _ressource) internal {
         require(_ressource.crackingDate >= 1 minutes);
 
@@ -141,22 +171,31 @@ event Transfer(address from, address to, uint256 tokenId );
         );
     }
 
+    /// @param _locations location to add
+    /// @param _locTokenId - token of the loc
 
+ function _addLocations(uint256 _locTokenId, LocationAdd memory _locations) internal {
+      require(_locations.locationType >= 1 minutes);
+
+      tokeniIdOfLocations[_locTokenId] = _locations;
+
+      emit LocationCreated(
+          uint256(_locTokenId),
+          uint256(_locations.locationType),
+          uint256(_locations.position)
+      );
+
+
+   }
 
 
     Ressource[] ressourceStats;
 
 
-    /// @dev create another struc for the location id.
+    
 
-    struct Location {
-        uint256 forest;
-        uint64 underground;
-        uint32 sea;
-        uint16 moutains;
-    }
+    LocationAdd[] locations;
 
-    Location[] locations;
 
 
 
