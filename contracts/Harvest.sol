@@ -132,7 +132,7 @@ event Transfer(address from, address to, uint256 tokenId );
     uint256 desert);
     event LocExploredFailed(uint256 locTokenId);
 
-
+    
    function _owns(address _claimant, uint256 _tokenId) internal view returns (bool) {
         return (nonFungibleContract.ownerOf(_tokenId) == _claimant);
     }
