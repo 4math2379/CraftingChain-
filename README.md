@@ -21,7 +21,7 @@
 
 # How to:
 ## Harvester
-This asset consist to harvest resources. more Harvester got **ablities**, more  the *Harvester* can succes to have the best resources.
+This asset consist to harvest resources. more Harvester got **ablities**, more  the *Harvester* can success to have the best resources.
 
 | Tool           | resources type| Bonus  |
 | ---------------|:--------------:| -----:|
@@ -29,12 +29,19 @@ This asset consist to harvest resources. more Harvester got **ablities**, more  
 | Factory        | Rare           |   + 1 |
 | Mining stations| Exceptional    |    +2 |
 
->> this feature will be code later, need to finish all other contracts.
+All those tools will be a separate Smart Contact[InProcessing].
  
  
 
 ## Crafter and resources type:
 ### Using ERC721 for adding this features.
+
+*Harvest.sol* is the main contract on the Blockchain who will set and get data ( content as resources).
+
+*Adventurer.sol* this contract will be instancied for the user in order to store all items [address] he gonna trade with Harvester class. [Harvester.sol(soon)].
+
+
+All items and resources will be non fungible TOken ERC 721.
 
 
 
