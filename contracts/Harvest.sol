@@ -73,21 +73,20 @@ contract ERC721 {
 
 
 contract Ressources is Harvest {
-/// @title contract for the ressources.
-/// @author Sinien Rahma blockchain101 , rahma@blockchain101.fr , (https://www.blockchain101.fr)
+// contract for the ressources.
 
 
-/// @dev event for craking the random ressources , the ownner , th type of ressources  and location.
+// event for craking the random ressources , the ownner , th type of ressources  and location.
 event CrakedRessources(address harvester, uint256 n, uint256 locationId);
 
 
-    /// @dev Transfer event as defined in current draft of ERC721. Emitted every time a kitten
+    // Transfer event as defined in current draft of ERC721. Emitted every time a kitten
 event Transfer(address from, address to, uint256 tokenId );
 
 
 
 
-///@dev this is the struct of each resources 256 bit words unpack it.
+// this is the struct of each resources 256 bit words unpack it.
     struct Ressource {
         uint overallQuality;
         uint crackingDate;
@@ -97,7 +96,7 @@ event Transfer(address from, address to, uint256 tokenId );
 
 
 
-    /// @dev create another struc for the location id.
+    // create another struc for the location id.
 
     struct LocationAdd {
         uint256 forest;
@@ -108,7 +107,7 @@ event Transfer(address from, address to, uint256 tokenId );
     }
 
 
-    //
+    
     ERC721 public nonFungibleContract;
 
 
@@ -138,8 +137,8 @@ event Transfer(address from, address to, uint256 tokenId );
     }
 
 
-     /// @dev Escrows the NFT, assigning ownership to this contract.
-    /// Throws if the escrow fails.
+     // Escrows the NFT, assigning ownership to this contract.
+    // Throws if the escrow fails.
     /// @param _owner - Current owner address of token to escrow.
     /// @param _tokenId - ID of token whose approval to verify.
     function _escrow(address _owner, uint256 _tokenId) internal {
@@ -147,8 +146,8 @@ event Transfer(address from, address to, uint256 tokenId );
         nonFungibleContract.transferFrom(_owner, address(this), _tokenId);
     }
 
-    /// @dev Transfers an NFT owned by this contract to another address.
-    /// Returns true if the transfer succeeds.
+    // Transfers an NFT owned by this contract to another address.
+    // Returns true if the transfer succeeds.
     /// @param _receiver - Address to transfer NFT to.
     /// @param _tokenId - ID of token to transfer.
     function _transfer(address _receiver, uint256 _tokenId) internal {
@@ -174,7 +173,7 @@ event Transfer(address from, address to, uint256 tokenId );
     /// @param _locations location to add
     /// @param _locTokenId - token of the loc
 
-function _addLocations(uint256 _locTokenId, LocationAdd memory _locations) internal {
+    function _addLocations(uint256 _locTokenId, LocationAdd memory _locations) internal {
     require(_locations.locationType >= 1 minutes);
 
     tokeniIdOfLocations[_locTokenId] = _locations;
@@ -186,23 +185,11 @@ function _addLocations(uint256 _locTokenId, LocationAdd memory _locations) inter
     );
 
 
-}
+    }
 
 
     Ressource[] ressourceStats;
-
-
-    
-
     LocationAdd[] locations;
-
-
-
-
-
-
-    ///@dev finish the generic stats ressourde from JS files.
-
 }
 
 
