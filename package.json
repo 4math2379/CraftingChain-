@@ -1,47 +1,53 @@
 {
-  "name": "anvil-cli",
-  "version": "1.0.0",
-  "description": "Cli",
-  "main": "truffle.js",
+  "name": "Crafting-Chain",
+  "version": "1.2.0",
+  "description": "Blockchain Crafting Game",
+  "main": "/src/js/app.js",
   "scripts": {
     "dev": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4math2379/CraftingChain-"
+  },
   "preferGlobal": true,
   "keywords": [
     "git",
-    "CLI"
+    "Blockchain",
+    "Ethereum",
+    "Solidity"
   ],
   "author": "Rahma Sinien",
   "license": "ISC",
   "dependencies": {
-    "@cityofzion/neon-js": "^3.10.1",
+    "@cityofzion/neon-js": "^3.11.9",
     "@openzeppelin/contracts": "^2.4.0",
-    "chalk": "^2.4.1",
+    "chalk": "^2.4.2",
     "clear": "0.0.1",
     "clui": "^0.3.6",
-    "colors": "^1.3.1",
-    "commander": "^2.17.1",
-    "figlet": "^1.2.0",
+    "colors": "^1.4.0",
+    "commander": "^2.20.3",
+    "figlet": "^1.2.4",
     "github": "^13.1.1",
     "help": "^3.0.2",
     "i": "^0.3.6",
     "inquirer": "^5.2.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.15",
     "minimist": "^1.2.0",
-    "npm-check-updates": "^3.1.21",
+    "npm-check-updates": "^3.2.2",
     "preferences": "^1.0.2",
-    "rxjs": "^6.2.2",
-    "simple-git": "^1.96.0",
-    "solhint": "^1.2.1",
-    "sweetalert2": "^8.14.0",
+    "rxjs": "^6.5.4",
+    "simple-git": "^1.130.0",
+    "solhint": "^1.5.1",
+    "sweetalert2": "^8.19.0",
     "touch": "^3.1.0",
-    "truffle": "^4.1.15",
+    "truffle": "^4.1.16",
     "truffle-hdwallet-provider": "^1.0.17",
-    "truffle-security": "^1.5.5",
+    "truffle-security": "^1.6.2",
     "zeppelin-solidity": "^1.12.0"
   },
   "devDependencies": {
-    "lite-server": "^2.4.0"
+    "lite-server": "^2.5.4"
   }
 }

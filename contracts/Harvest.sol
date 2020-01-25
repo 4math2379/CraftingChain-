@@ -14,7 +14,7 @@ address public adventurer;
 
     /// @dev access modifier of both accounts.
 
-     modifier onlyHarvester()  {
+    modifier onlyHarvester()  {
         require(msg.sender == harvester);
         _;
     }
@@ -133,7 +133,7 @@ event Transfer(address from, address to, uint256 tokenId );
     event LocExploredFailed(uint256 locTokenId);
 
     
-   function _owns(address _claimant, uint256 _tokenId) internal view returns (bool) {
+    function _owns(address _claimant, uint256 _tokenId) internal view returns (bool) {
         return (nonFungibleContract.ownerOf(_tokenId) == _claimant);
     }
 
@@ -174,19 +174,19 @@ event Transfer(address from, address to, uint256 tokenId );
     /// @param _locations location to add
     /// @param _locTokenId - token of the loc
 
- function _addLocations(uint256 _locTokenId, LocationAdd memory _locations) internal {
-      require(_locations.locationType >= 1 minutes);
+function _addLocations(uint256 _locTokenId, LocationAdd memory _locations) internal {
+    require(_locations.locationType >= 1 minutes);
 
-      tokeniIdOfLocations[_locTokenId] = _locations;
+    tokeniIdOfLocations[_locTokenId] = _locations;
 
-      emit LocationCreated(
-          uint256(_locTokenId),
-          uint256(_locations.locationType),
-          uint256(_locations.position)
-      );
+    emit LocationCreated(
+        uint256(_locTokenId),
+        uint256(_locations.locationType),
+        uint256(_locations.position)
+    );
 
 
-   }
+}
 
 
     Ressource[] ressourceStats;
