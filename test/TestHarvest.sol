@@ -1,37 +1,37 @@
 // solium-disable linebreak-style
 pragma solidity >=0.4.21 <0.6.0;
 
-import "node_modules/truffle/build/Assert.sol";
+import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
 import "../contracts/Harvest.sol";
 
 contract TestHarvest {
     Harvest harvest = Harvest(DeployedAddresses.Harvest());
+
+    uint expectedRessourceiD = 8;
     function testUserCanHarvest() public {
-        uint returnedId = harvest.sample(8);
+        uint returnedId = harvest.harvester(8);
 
-        uint expected = 8;
-
-        Assert.equal(returnedId, expected, " Harvesting id .");
+        Assert.equal(returnedId, expectedRessourceiD, " Harvesting id .");
     }
 
     function testGetSampleByResourceId() public {
-  // Expected owner is this contract
-        address expected = this;
+  // expectedRessourceiD owner is this contract
+        address expectedRessourceiD = this;
 
         address harvester = harvest.harvester(8);
 
-        Assert.equal(harvester, expected, " Harvester of resources ID 8 should be recorded.");
+        Assert.equal(harvester, expectedRessourceiD, " Harvester of resources ID 8 should be recorded.");
     }
     // Testing retrieval of all sampler
     function testGetHarvesterAddressByResourcesIdInArray() public {
-  // Expected owner is this contract
-        address expected = this;
+  // expectedRessourceiD owner is this contract
+        address expectedHarvester = this;
 
   // Store harvester in memory rather than contract's storage
         address[16] memory harvester = harvest.getHarvester();
 
-        Assert.equal(harvester[8], expected, "Owner of pet ID 8 should be recorded.");
+        Assert.equal(harvester[8], expectedHarvester, "Owner of pet ID 8 should be recorded.");
     }
 
 }

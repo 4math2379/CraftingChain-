@@ -14,6 +14,25 @@ address public adventurer;
 
     /// @dev access modifier of both accounts.
 
+    address[16] public harvesters;
+
+    ///@dev function to harvest ressource
+
+function harvest(uint ressourceId) public returns (uint) {
+    require(ressourceId >= 0 && ressourceId <= 15);
+
+    harvesters[ressourceId] = msg.sender;
+
+    return ressourceId;
+}
+
+//getHarvester function in order to update all ressources status
+
+function getHarvesters() public view returns (address[16] memory) {
+    return harvesters;
+    
+}
+
     modifier onlyHarvester()  {
         require(msg.sender == harvester);
         _;
@@ -71,7 +90,7 @@ contract ERC721 {
     function supportsInterface(bytes4 _interfaceID) external view returns (bool);
 }
 
-
+/*
 contract Ressources is Harvest {
 // contract for the ressources.
 
@@ -190,7 +209,7 @@ event Transfer(address from, address to, uint256 tokenId );
 
     Ressource[] ressourceStats;
     LocationAdd[] locations;
-}
+}*/
 
 
 
