@@ -46,27 +46,41 @@
     "name": "Solonium Gas",
     "picture": "images/resources.jpg",
     "rarity": "Rare",
-    "location": "Underground Volcanic sites"
+    "location": "Volcanic sites"
   },
   {
     "id": 7,
     "name": "Liquid Steel",
     "picture": "images/resources.jpg",
     "rarity": "Rare",
-    "location": "unknown"
+    "location": "ground mine"
   },
   {
     "id": 8,
     "name": "Phrik Guas",
     "picture": "images/resources.jpg",
     "rarity": "Rare",
-    "location": "unknown"
+    "location": "Sun"
   },{
     "id": 9,
     "name": "Dark Steel",
     "picture": "images/resources.jpg",
     "rarity": "Rare",
-    "location": "unknown"
+    "location": "Moon"
+  },
+  {
+    "id": 10,
+    "name": "Cryptonium",
+    "picture": "images/resources.jpg",
+    "rarity": "Rare",
+    "location": "Space"
+  },
+  {
+    "id": 11,
+    "name": "Blockchain Azureites",
+    "picture": "images/resources.jpg",
+    "rarity": "Rare",
+    "location": "Vega Constellation"
   }
   
   
