@@ -3,9 +3,9 @@
 ![alt text](https://image.flaticon.com/icons/svg/2708/2708997.svg) 
 
 
-##  Blockchain game concerning harvesting resources and craft epic object with it.
+## Blockchain game concerning harvesting resources and craft epic object with it.
 
-Using the Ethereum Blockchain, **Blockchain101** will release a  Web dApp Browser game:  CraftingChain`.
+Using the Ethereum Blockchain, **Blockchain101** got in development a Web dApp Browser game:  CraftingChain`.
 
 Using Ethereum [ETH], user can *sample* resources in order to Craft items [Tools] or Stake that resources, both will be non fungible tokens [ERC721].
 
@@ -19,10 +19,10 @@ A decentralized exchange inside the dApp will be add later after release.
 - [ ]  **Professions and location need to be implemented.**
 - [ ]  **Game resources has been created**.
 - [x]  ~~Choose a blockchain to use it~~  <*ETHEREUM on September 2018*>
-- [ ]  *Finish the Readme*. :P
+- [ ]  *Finish the Readme*. :sweat_smile:
 - [x]  **NO LEVEL REQUIRE TO EVOLVE IN THE GAME** ☣️
 - [x]  ~~**Create inventory**~~ *removed*
-- [x]  **20 August 2018 moved to truffle Framework.**
+- [x]  **20 August 2018 moved to truffle Framework.** 🍩
 - [ ]  **update the Smart contract, looking to move to ~~VueJS~~ or React**
 - [ ]  **adding ERC721 for all contracts**
 - [ ]  **Audit security with MythX**
@@ -40,8 +40,9 @@ With Harvester user have **abilities**, the *Harvest* can have the success to ex
 
 ### Abstract [Pre-Alpha development]
 
-Players can buy some tools named *Facilities*. 
-Only one Kind of Facilities per player.
+Players can buy some tools named *Facilities*. 🏭
+
+Only one type of facility can be own per player.
 
 | Tool           | Staking Bonus  | Bonus |
 | ---------------|:--------------:| -----:|
@@ -49,7 +50,7 @@ Only one Kind of Facilities per player.
 | Factory        | Rare           |   + 1 |
 | Mining stations| Exceptional    |    +2 |
 
-All those tools will be a separate Smart Contact[InProcessing].
+All those tools will be a add into Smart Contact.
 - [ ] Mining Facility Smart Contract.
 - [ ] Factory Smart Contract.
 - [ ] Mining Stations Smart Contract.
