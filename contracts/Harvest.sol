@@ -16,6 +16,8 @@ function harvest(uint ressourceId) public returns (uint) {
     return ressourceId;
 }
 
+
+
 //getHarvester function in order to update all ressources status
 
 function getHarvesters() public view returns (address[16] memory) {
