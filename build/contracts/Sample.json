@@ -1,5 +1,5 @@
 {
-  "contractName": "Harvest",
+  "contractName": "Sample",
   "abi": [
     {
       "anonymous": false,
@@ -49,19 +49,13 @@
     },
     {
       "constant": true,
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "harvesters",
+      "inputs": [],
+      "name": "getHarvesters",
       "outputs": [
         {
-          "internalType": "address",
+          "internalType": "address[16]",
           "name": "",
-          "type": "address"
+          "type": "address[16]"
         }
       ],
       "payable": false,
@@ -91,25 +85,87 @@
     },
     {
       "constant": true,
-      "inputs": [],
-      "name": "getHarvesters",
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "harvesters",
       "outputs": [
         {
-          "internalType": "address[16]",
+          "internalType": "address",
           "name": "",
-          "type": "address[16]"
+          "type": "address"
         }
       ],
       "payable": false,
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "resourceStats",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "quality",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "coldResistance",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "shockResistance",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "receiver",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "send",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Sent\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"balances\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getHarvesters\",\"outputs\":[{\"internalType\":\"address[16]\",\"name\":\"\",\"type\":\"address[16]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"ressourceId\",\"type\":\"uint256\"}],\"name\":\"harvest\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"harvesters\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/Harvest.sol\":\"Harvest\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/Harvest.sol\":{\"keccak256\":\"0x42a6630c61c9368f0eac628a52a242ebd86dddd0b98dbe45ceedcf6d8e2a9a39\",\"urls\":[\"bzz-raw://29c10a1b2994ae2ad9208e90a1efc165311788087834ad4accb0417c46fe834e\",\"dweb:/ipfs/QmZ135dHVhUt5P8bqTwEk6MfaxJMdeMqiivW7NbejH9T3n\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b50610334806100206000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c806327e235e314610051578063b2dd53eb146100a9578063ddc63262146100ef578063ea02cea414610131575b600080fd5b6100936004803603602081101561006757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061019f565b6040518082815260200191505060405180910390f35b6100b16101b7565b6040518082601060200280838360005b838110156100dc5780820151818401526020810190506100c1565b5050505090500191505060405180910390f35b61011b6004803603602081101561010557600080fd5b8101908080359060200190929190505050610238565b6040518082815260200191505060405180910390f35b61015d6004803603602081101561014757600080fd5b81019080803590602001909291905050506102a9565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60106020528060005260406000206000915090505481565b6101bf6102dc565b600060108060200260405190810160405280929190826010801561022e576020028201915b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190600101908083116101e4575b5050505050905090565b600080821015801561024b5750600f8211155b61025457600080fd5b336000836010811061026257fe5b0160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550819050919050565b600081601081106102b657fe5b016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60405180610200016040528060109060208202803883398082019150509050509056fea265627a7a72315820143c07c8f189172528ff9dfcfddc03f189505a5acae4d6026536580b9299d03164736f6c63430005100032",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c806327e235e314610051578063b2dd53eb146100a9578063ddc63262146100ef578063ea02cea414610131575b600080fd5b6100936004803603602081101561006757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061019f565b6040518082815260200191505060405180910390f35b6100b16101b7565b6040518082601060200280838360005b838110156100dc5780820151818401526020810190506100c1565b5050505090500191505060405180910390f35b61011b6004803603602081101561010557600080fd5b8101908080359060200190929190505050610238565b6040518082815260200191505060405180910390f35b61015d6004803603602081101561014757600080fd5b81019080803590602001909291905050506102a9565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60106020528060005260406000206000915090505481565b6101bf6102dc565b600060108060200260405190810160405280929190826010801561022e576020028201915b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190600101908083116101e4575b5050505050905090565b600080821015801561024b5750600f8211155b61025457600080fd5b336000836010811061026257fe5b0160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550819050919050565b600081601081106102b657fe5b016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60405180610200016040528060109060208202803883398082019150509050509056fea265627a7a72315820143c07c8f189172528ff9dfcfddc03f189505a5acae4d6026536580b9299d03164736f6c63430005100032",
-  "sourceMap": "77:676:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;77:676:0;;;;;;;",
-  "deployedSourceMap": "77:676:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;77:676:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;174:41;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;174:41:0;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;648:100;;;:::i;:::-;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;648:100:0;;;;;;;;;;;;;;;;304:212;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;304:212:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;142:29;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;142:29:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;174:41;;;;;;;;;;;;;;;;;:::o;648:100::-;694:18;;:::i;:::-;728:10;721:17;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;648:100;:::o;304:212::-;355:4;391:1;376:11;:16;;:37;;;;;411:2;396:11;:17;;376:37;368:46;;;;;;453:10;427;438:11;427:23;;;;;;;;;:36;;;;;;;;;;;;;;;;;;479:11;472:18;;304:212;;;:::o;142:29::-;;;;;;;;;;;;;;;;;;;;;;;:::o;77:676::-;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;148:4;140:6;136:17;126:27;;0:157;77:676:0;;;;:::o",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Sent\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"balances\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getHarvesters\",\"outputs\":[{\"internalType\":\"address[16]\",\"name\":\"\",\"type\":\"address[16]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"ressourceId\",\"type\":\"uint256\"}],\"name\":\"harvest\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"harvesters\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"resourceStats\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"quality\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"coldResistance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"shockResistance\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"send\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/Harvest.sol\":\"Sample\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/Harvest.sol\":{\"keccak256\":\"0x42a6630c61c9368f0eac628a52a242ebd86dddd0b98dbe45ceedcf6d8e2a9a39\",\"urls\":[\"bzz-raw://29c10a1b2994ae2ad9208e90a1efc165311788087834ad4accb0417c46fe834e\",\"dweb:/ipfs/QmZ135dHVhUt5P8bqTwEk6MfaxJMdeMqiivW7NbejH9T3n\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061071b806100206000396000f3fe608060405234801561001057600080fd5b50600436106100625760003560e01c806327e235e3146100675780632a7cbbe3146100bf578063b2dd53eb1461017b578063d0679d34146101c1578063ddc632621461020f578063ea02cea414610251575b600080fd5b6100a96004803603602081101561007d57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506102bf565b6040518082815260200191505060405180910390f35b6100eb600480360360208110156100d557600080fd5b81019080803590602001909291905050506102d7565b6040518085815260200184815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b8381101561013d578082015181840152602081019050610122565b50505050905090810190601f16801561016a5780820380516001836020036101000a031916815260200191505b509550505050505060405180910390f35b6101836103ac565b6040518082601060200280838360005b838110156101ae578082015181840152602081019050610193565b5050505090500191505060405180910390f35b61020d600480360360408110156101d757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919050505061042d565b005b61023b6004803603602081101561022557600080fd5b810190808035906020019092919050505061061f565b6040518082815260200191505060405180910390f35b61027d6004803603602081101561026757600080fd5b8101908080359060200190929190505050610690565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60106020528060005260406000206000915090505481565b601181815481106102e457fe5b9060005260206000209060040201600091509050806000015490806001015490806002015490806003018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103a25780601f10610377576101008083540402835291602001916103a2565b820191906000526020600020905b81548152906001019060200180831161038557829003601f168201915b5050505050905084565b6103b46106c3565b6000601080602002604051908101604052809291908260108015610423576020028201915b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190600101908083116103d9575b5050505050905090565b601060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020548111156104e2576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260158152602001807f496e73756666696369656e742062616c616e63652e000000000000000000000081525060200191505060405180910390fd5b80601060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254039250508190555080601060008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055507f3990db2d31862302a685e8086b5755072a6e2b5b780af1ee81ece35ee3cd3345338383604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001828152602001935050505060405180910390a15050565b60008082101580156106325750600f8211155b61063b57600080fd5b336000836010811061064957fe5b0160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550819050919050565b6000816010811061069d57fe5b016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60405180610200016040528060109060208202803883398082019150509050509056fea265627a7a723158200e246f132fad367c3b4462c3e08cedfc4eebfe5ba682d5f1edb7ea52d84dee8564736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100625760003560e01c806327e235e3146100675780632a7cbbe3146100bf578063b2dd53eb1461017b578063d0679d34146101c1578063ddc632621461020f578063ea02cea414610251575b600080fd5b6100a96004803603602081101561007d57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506102bf565b6040518082815260200191505060405180910390f35b6100eb600480360360208110156100d557600080fd5b81019080803590602001909291905050506102d7565b6040518085815260200184815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b8381101561013d578082015181840152602081019050610122565b50505050905090810190601f16801561016a5780820380516001836020036101000a031916815260200191505b509550505050505060405180910390f35b6101836103ac565b6040518082601060200280838360005b838110156101ae578082015181840152602081019050610193565b5050505090500191505060405180910390f35b61020d600480360360408110156101d757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919050505061042d565b005b61023b6004803603602081101561022557600080fd5b810190808035906020019092919050505061061f565b6040518082815260200191505060405180910390f35b61027d6004803603602081101561026757600080fd5b8101908080359060200190929190505050610690565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60106020528060005260406000206000915090505481565b601181815481106102e457fe5b9060005260206000209060040201600091509050806000015490806001015490806002015490806003018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103a25780601f10610377576101008083540402835291602001916103a2565b820191906000526020600020905b81548152906001019060200180831161038557829003601f168201915b5050505050905084565b6103b46106c3565b6000601080602002604051908101604052809291908260108015610423576020028201915b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190600101908083116103d9575b5050505050905090565b601060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020548111156104e2576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260158152602001807f496e73756666696369656e742062616c616e63652e000000000000000000000081525060200191505060405180910390fd5b80601060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254039250508190555080601060008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055507f3990db2d31862302a685e8086b5755072a6e2b5b780af1ee81ece35ee3cd3345338383604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001828152602001935050505060405180910390a15050565b60008082101580156106325750600f8211155b61063b57600080fd5b336000836010811061064957fe5b0160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550819050919050565b6000816010811061069d57fe5b016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60405180610200016040528060109060208202803883398082019150509050509056fea265627a7a723158200e246f132fad367c3b4462c3e08cedfc4eebfe5ba682d5f1edb7ea52d84dee8564736f6c63430005100032",
+  "sourceMap": "786:472:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;786:472:0;;;;;;;",
+  "deployedSourceMap": "786:472:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;786:472:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;174:41;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;174:41:0;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1217:37;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1217:37:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1217:37:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;648:100;;;:::i;:::-;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;648:100:0;;;;;;;;;;;;;;;;824:265;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;824:265:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;304:212;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;304:212:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;142:29;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;142:29:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;174:41;;;;;;;;;;;;;;;;;:::o;1217:37::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;648:100::-;694:18;;:::i;:::-;728:10;721:17;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;648:100;:::o;824:265::-;905:8;:20;914:10;905:20;;;;;;;;;;;;;;;;895:6;:30;;887:64;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;986:6;962:8;:20;971:10;962:20;;;;;;;;;;;;;;;;:30;;;;;;;;;;;1025:6;1003:8;:18;1012:8;1003:18;;;;;;;;;;;;;;;;:28;;;;;;;;;;;1047:34;1052:10;1064:8;1074:6;1047:34;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;824:265;;:::o;304:212::-;355:4;391:1;376:11;:16;;:37;;;;;411:2;396:11;:17;;376:37;368:46;;;;;;453:10;427;438:11;427:23;;;;;;;;;:36;;;;;;;;;;;;;;;;;;479:11;472:18;;304:212;;;:::o;142:29::-;;;;;;;;;;;;;;;;;;;;;;;:::o;786:472::-;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;148:4;140:6;136:17;126:27;;0:157;786:472:0;;;;:::o",
   "source": "// solium-disable linebreak-style\r\npragma solidity >=0.4.21 <0.6.0;\r\n\r\n\r\n\r\n\r\ncontract Harvest {\r\n\r\n//address of the user during the instance\r\naddress[16] public harvesters;\r\nmapping (address => uint) public balances;\r\n\r\nevent Sent(address from, address to, uint amount);\r\n\r\n\r\n\r\n//identify the resources\r\nfunction harvest(uint ressourceId) public returns (uint) {\r\n    require(ressourceId >= 0 && ressourceId <= 15);\r\n\r\n\r\n\r\n    harvesters[ressourceId] = msg.sender;\r\n\r\n    return ressourceId;\r\n\r\n    \r\n\r\n\r\n\r\n    \r\n\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n//getHarvester function in order to update all ressources status and place it inside the metamask wallet provider.\r\n\r\nfunction getHarvesters() public view returns (address[16] memory) {\r\n    return harvesters;\r\n\r\n    }\r\n\r\n}\r\n\r\n\r\n//add ERC 721 to contract\r\ncontract Sample is Harvest {\r\n\r\n\r\n    function send(address receiver, uint amount) public {\r\n        require(amount <= balances[msg.sender], \"Insufficient balance.\");\r\n        balances[msg.sender] -= amount;\r\n        balances[receiver] += amount;\r\n        emit Sent(msg.sender, receiver, amount);\r\n    }\r\n\r\n\r\n    struct ResourcesStats {\r\n    uint quality;\r\n    uint coldResistance;\r\n    uint shockResistance;\r\n    string name;\r\n}\r\nResourcesStats[] public resourceStats;\r\n}\r\n\r\n\r\n\r\n\r\n",
   "sourcePath": "C:/Users/Rahma John/Documents/dev/CraftingChain-/contracts/Harvest.sol",
   "ast": {
@@ -2932,62 +2988,9 @@
     "name": "solc",
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
-  "networks": {
-    "3": {
-      "events": {},
-      "links": {},
-      "address": "0x041022665F03eb8743c2F099D8E4bB9BA720a335",
-      "transactionHash": "0x85032a5d9a356fba99f6651495a1b3b7e4a5dfc541438e3f3d324b393165bd4a"
-    },
-    "5777": {
-      "events": {
-        "0x3990db2d31862302a685e8086b5755072a6e2b5b780af1ee81ece35ee3cd3345": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "internalType": "address",
-              "name": "from",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "internalType": "address",
-              "name": "to",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "internalType": "uint256",
-              "name": "amount",
-              "type": "uint256"
-            }
-          ],
-          "name": "Sent",
-          "type": "event",
-          "signature": "0x3990db2d31862302a685e8086b5755072a6e2b5b780af1ee81ece35ee3cd3345"
-        }
-      },
-      "links": {},
-      "address": "0x4C3F6278afA3Bc4c9cae3b3496eaC32fd6B2CD1c",
-      "transactionHash": "0x8b55a5ea39d0080b3d0b19482fbaf88161b90347c711cc9f94f4c7cb1deecb5f"
-    },
-    "1570809686487": {
-      "events": {},
-      "links": {},
-      "address": "0x93D6eE4d95c3Bd5b7c7D98990354FA1765E3Ed4d",
-      "transactionHash": "0x3d33b4ef7b846c0504a9526bfeb0c2f7de8a0ea0b307f70b2b5c251a0a601bd1"
-    },
-    "1572568458726": {
-      "events": {},
-      "links": {},
-      "address": "0xE825CE9Eb514b7698d79c74B98b896a963E9e84F",
-      "transactionHash": "0x6e3073ec2332865d9a56fe5b81dba6d8cdfbc8f98191832623134376d1faacdd"
-    }
-  },
+  "networks": {},
   "schemaVersion": "3.0.21",
-  "updatedAt": "2020-04-01T21:24:41.506Z",
-  "networkType": "ethereum",
+  "updatedAt": "2020-04-01T21:23:12.834Z",
   "devdoc": {
     "methods": {}
   },
