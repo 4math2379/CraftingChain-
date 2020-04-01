@@ -54,6 +54,19 @@
     "picture": "images/resources.jpg",
     "rarity": "Rare",
     "location": "unknown"
+  },
+  {
+    "id": 8,
+    "name": "Phrik Guas",
+    "picture": "images/resources.jpg",
+    "rarity": "Rare",
+    "location": "unknown"
+  },{
+    "id": 9,
+    "name": "Dark Steel",
+    "picture": "images/resources.jpg",
+    "rarity": "Rare",
+    "location": "unknown"
   }
   
   

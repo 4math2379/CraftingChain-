@@ -9,29 +9,28 @@ contract TestHarvest {
     Harvest harvest = Harvest(DeployedAddresses.Harvest());
 
     uint expectedRessourceiD = 8;
+    address expectedHarvester = address(this);
+
+
+
     function testUserCanHarvest() public {
-        uint returnedId = harvest.harvester(8);
+        uint returnedId = harvest.harvest(expectedRessourceiD);
 
-        Assert.equal(returnedId, expectedRessourceiD, " Harvesting id .");
+        Assert.equal(returnedId, expectedRessourceiD, " Harvesting id expected match .");
     }
 
-    function testGetSampleByResourceId() public {
-  // expectedRessourceiD owner is this contract
-        address expectedRessourceiD = this;
+    function testGetHarvesterAddressByRessourceId() public {
+        address harvesters =harvest.harvesters(expectedRessourceiD);
 
-        address harvester = harvest.harvester(8);
-
-        Assert.equal(harvester, expectedRessourceiD, " Harvester of resources ID 8 should be recorded.");
+        Assert.equal(harvesters, expectedHarvester," Owner of the expected ressources");
     }
-    // Testing retrieval of all sampler
-    function testGetHarvesterAddressByResourcesIdInArray() public {
-  // expectedRessourceiD owner is this contract
-        address expectedHarvester = this;
 
-  // Store harvester in memory rather than contract's storage
-        address[16] memory harvester = harvest.getHarvester();
 
-        Assert.equal(harvester[8], expectedHarvester, "Owner of pet ID 8 should be recorded.");
-    }
+    function testGetHarvesterAddressByRessourceIdInArray() public {
+  address[16] memory harvesters = harvest.getHarvesters();
+
+  Assert.equal(harvesters[expectedRessourceiD], expectedHarvester, "Owner of the expected ressource should be this contract");
+}
+
 
 }
