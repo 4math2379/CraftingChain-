@@ -18,19 +18,6 @@ App = {
         petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
 
         petsRow.append(petTemplate.html());
-
-
-      /*var resourcesRow = $('#resourcesRow');
-      var resourcesTemplate = $('#resourcesTemplate');
-
-      for (i = 0; i < data.length; i ++) {
-        resourcesTemplate.find('.panel-title').text(data[i].name);
-        resourcesTemplate.find('img').attr('src', data[i].picture);
-        resourcesTemplate.find('.resource-rarity').text(data[i].rarity);
-        resourcesTemplate.find('.resource-location').text(data[i].location);
-        resourcesTemplate.find('.btn-sample').attr('data-id', data[i].id);
-
-        resourcesRow.append(resourcesTemplate.html());*/
       }
     });
 
@@ -56,8 +43,8 @@ else if (window.web3) {
 }
 // If no injected web3 instance is detected, fall back to Ganache
 else {
-  App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
-  //App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/583c67d6aae34e3794a8b5fd9009dc93');
+  //App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+  App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/583c67d6aae34e3794a8b5fd9009dc93');
 }
 web3 = new Web3(App.web3Provider);
 
@@ -65,15 +52,17 @@ web3 = new Web3(App.web3Provider);
   },
 
   initContract: function() {
-    $.getJSON('Harvest.json', function(data) {
+    $.getJSON('Harvest.json', "Sample.json", function(data) {
       // Get the necessary contract artifact file and instantiate it with truffle-contract
       var HarvestArtifact = data;
       App.contracts.Harvest = TruffleContract(HarvestArtifact);
+      App.contracts.Sample
     
       // Set the provider for our contract
       App.contracts.Harvest.setProvider(App.web3Provider);
     
       return App.markAdopted();
+      //return the markedBuyResource and catch it
     });
 
     return App.bindEvents();
@@ -82,6 +71,13 @@ web3 = new Web3(App.web3Provider);
   bindEvents: function() {
     $(document).on('click', '.btn-adopt', App.handleAdopt);
   },
+
+  //init sample contract with awardItem function
+  //return in a func and catch it 
+
+
+
+
 
   markAdopted: function(harvesters, account) {
     var adoptionInstance;
@@ -101,6 +97,12 @@ web3 = new Web3(App.web3Provider);
     });
   },
 
+
+
+
+  //fire a markedResourceBuy from Sample contract
+  //deployed then function , return and catch it
+
   handleAdopt: function(event) {
     event.preventDefault();
 
@@ -118,7 +120,6 @@ web3.eth.getAccounts(function(error, accounts) {
   App.contracts.Harvest.deployed().then(function(instance) {
     adoptionInstance = instance;
 
-    // Execute adopt as a transaction by sending account
     return adoptionInstance.harvest(petId, {from: account});
   }).then(function(result) {
     return App.markAdopted();

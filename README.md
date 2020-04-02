@@ -44,7 +44,7 @@ With Harvester user have **abilities**, the *Harvest* can have the success to ex
 
 
 #### **RCT**
-During the *Harvest.sol* instance by Web3, user can sample a resource by buying it, i will become a **RCT**.
+During the *Sample.sol* instance by Web3, user can sample a resource by buying it, i will become a **RCT**.
 
 Resource Chain Token, is a ERC 721 non unique Token it's mean it will have a unique ID and his own **Resources** stats. 
 

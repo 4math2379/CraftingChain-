@@ -22,7 +22,7 @@
   "license": "ISC",
   "dependencies": {
     "@cityofzion/neon-js": "^3.11.9",
-    "@openzeppelin/contracts": "^2.4.0",
+    "@openzeppelin/contracts": "^2.5.0",
     "chalk": "^2.4.2",
     "clear": "0.0.1",
     "clui": "^0.3.6",

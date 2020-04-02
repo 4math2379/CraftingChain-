@@ -1,10 +1,21 @@
 
 
-var Harvest = artifacts.require("Harvest");
-//var Adventurer = artifacts.require("Adventurer");
+const Harvest = artifacts.require("Harvest");
 
-module.exports = function(deployer) {
+const Sample = artifacts.require("Sample")
+
+module.exports =  function(deployer) {
   deployer.deploy(Harvest)
-}
+  
+  
+};
+
+module.exports =  function(deployer) {
+  deployer.deploy(Sample)
+  
+  
+};
+
+
 
   

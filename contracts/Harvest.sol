@@ -2,6 +2,10 @@
 pragma solidity >=0.4.21 <0.6.0;
 
 
+import "../node_modules/@openzeppelin/contracts/token/ERC721/ERC721Full.sol";
+import "../node_modules/@openzeppelin/contracts/drafts/Counters.sol";
+
+
 
 
 contract Harvest {
@@ -9,8 +13,7 @@ contract Harvest {
 //address of the user during the instance
 address[16] public harvesters;
 mapping (address => uint) public balances;
-
-event Sent(address from, address to, uint amount);
+mapping(address => mapping(address => uint256)) public allowance;
 
 
 
@@ -48,26 +51,7 @@ function getHarvesters() public view returns (address[16] memory) {
 
 
 //add ERC 721 to contract
-contract Sample is Harvest {
-/// @dev here it is all the Token ERC 721 spec
 
-
-    function send(address receiver, uint amount) public {
-        require(amount <= balances[msg.sender], "Insufficient balance.");
-        balances[msg.sender] -= amount;
-        balances[receiver] += amount;
-        emit Sent(msg.sender, receiver, amount);
-    }
-
-
-    struct ResourcesStats {
-    uint quality;
-    uint coldResistance;
-    uint shockResistance;
-    string name;
-}
-ResourcesStats[] public resourceStats;
-}
 
 
 
