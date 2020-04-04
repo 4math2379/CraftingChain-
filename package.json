@@ -4,7 +4,7 @@
   "description": "Blockchain Crafting Game",
   "main": "/src/js/app.js",
   "scripts": {
-    "dev": "lite-server",
+    "start": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +23,7 @@
   "dependencies": {
     "@cityofzion/neon-js": "^3.11.9",
     "@openzeppelin/contracts": "^2.5.0",
+    "axios": "^0.19.2",
     "chalk": "^2.4.2",
     "clear": "0.0.1",
     "clui": "^0.3.6",
@@ -35,7 +36,7 @@
     "i": "^0.3.6",
     "inquirer": "^5.2.0",
     "lodash": "^4.17.15",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.5",
     "npm-check-updates": "^3.2.2",
     "preferences": "^1.0.2",
     "rxjs": "^6.5.4",
@@ -45,7 +46,7 @@
     "touch": "^3.1.0",
     "truffle": "^4.1.16",
     "truffle-hdwallet-provider": "^1.0.17",
-    "truffle-security": "^1.6.2",
+    "truffle-security": "^1.7.1",
     "zeppelin-solidity": "^1.12.0"
   },
   "devDependencies": {

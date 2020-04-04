@@ -43,8 +43,8 @@ else if (window.web3) {
 }
 // If no injected web3 instance is detected, fall back to Ganache
 else {
-  //App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
-  App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/583c67d6aae34e3794a8b5fd9009dc93');
+  App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+  //App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/583c67d6aae34e3794a8b5fd9009dc93');
 }
 web3 = new Web3(App.web3Provider);
 
@@ -52,11 +52,11 @@ web3 = new Web3(App.web3Provider);
   },
 
   initContract: function() {
-    $.getJSON('Harvest.json', "Sample.json", function(data) {
+    $.getJSON('Harvest.json', function(data) {
       // Get the necessary contract artifact file and instantiate it with truffle-contract
       var HarvestArtifact = data;
       App.contracts.Harvest = TruffleContract(HarvestArtifact);
-      App.contracts.Sample
+      
     
       // Set the provider for our contract
       App.contracts.Harvest.setProvider(App.web3Provider);
@@ -68,17 +68,52 @@ web3 = new Web3(App.web3Provider);
     return App.bindEvents();
   },
 
+
+  initContract: function() {
+    $.getJSON("Sample.json", function(data) {
+      // Get the necessary contract artifact file and instantiate it with truffle-contract
+      var SampleArtifact = data;
+      App.contracts.Sample = TruffleContract(SampleArtifact);
+      
+    
+      // Set the provider for our contract
+      App.contracts.Sample.setProvider(App.web3Provider);
+    
+      return App.markedBuy();
+      //return the markedBuyResource and catch it
+    });
+
+    return App.bindEvents();
+  },
+
   bindEvents: function() {
-    $(document).on('click', '.btn-adopt', App.handleAdopt);
+    $(document).on('click', '.btn-adopt', App.handleAdopt, App.handleResourceBuy);
   },
 
   //init sample contract with awardItem function
   //return in a func and catch it 
+  markedBuy: function(samplers, account) {
+    var adoptionInstance;
+
+    App.contracts.Sample.deployed().then(function(instance) {
+      adoptionInstance = instance;
+    
+      return adoptionInstance.awardItem.call();
+    }).then(function(samplers) {
+      for (i = 0; i < samplers.length; i++) {
+        if (samplers[i] !== '0x0000000000000000000000000000000000000000') {
+          $('.panel-pet').eq(i).find('button').text('Success').attr('disabled', true);
+        }
+      }
+    }).catch(function(err) {
+      console.log(err.message);
+    });
+  },
 
 
 
 
-
+//harvest address adopt
   markAdopted: function(harvesters, account) {
     var adoptionInstance;
 
@@ -100,8 +135,6 @@ web3 = new Web3(App.web3Provider);
 
 
 
-  //fire a markedResourceBuy from Sample contract
-  //deployed then function , return and catch it
 
   handleAdopt: function(event) {
     event.preventDefault();
@@ -123,6 +156,34 @@ web3.eth.getAccounts(function(error, accounts) {
     return adoptionInstance.harvest(petId, {from: account});
   }).then(function(result) {
     return App.markAdopted();
+  }).catch(function(err) {
+    console.log(err.message);
+  });
+});
+  },
+
+//handle the resource buy
+
+  handleResourceBuy: function(event) {
+    event.preventDefault();
+
+    var petId = parseInt($(event.target).data('id'));
+
+    var adoptionInstance;
+
+web3.eth.getAccounts(function(error, accounts) {
+  if (error) {
+    console.log(error);
+  }
+
+  var account = accounts[0];
+
+  App.contracts.Sample.deployed().then(function(instance) {
+    adoptionInstance = instance;
+
+    return adoptionInstance.harvest(petId, {from: account});
+  }).then(function(result) {
+    return App.markedBuy();
   }).catch(function(err) {
     console.log(err.message);
   });
