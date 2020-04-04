@@ -4,7 +4,7 @@
   "description": "Blockchain Crafting Game",
   "main": "/src/js/app.js",
   "scripts": {
-    "start": "lite-server",
+    "dev": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
