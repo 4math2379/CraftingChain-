@@ -24,8 +24,7 @@ contract RefiningInterface {
     );
 }
 contract ResourceRefined is Sample , KittyCore {
-    RefiningInterface KittyContract = AnotherInterface(KittyCore);
-    RefiningInterface AnotherInterface;
+    ResourceRefined KittyContract;
 
     modifier onlyOwnerOf(uint _resourceId) {
         require(msg.sender == resourceToOwner[_resourceId]);
@@ -33,8 +32,9 @@ contract ResourceRefined is Sample , KittyCore {
     }
 
 
+
     function SetAnotherContractAddress (address _address) external onlyOwner {
-        KittyContract = RefiningInterface(_address);
+        KittyContract = ResourceRefined(_address);
     }
 
     function triggerCooldown (Resource storage _resource ) internal {
@@ -52,18 +52,18 @@ contract ResourceRefined is Sample , KittyCore {
         require(_isReady(myResource));
         _targetQuality % qualityModulo;
         uint newQuality = (myResource.quality + _targetQuality) / 2;
-        if(keccak256(_types) == keccak256(abi.encode("Kitty"))) {
+        if(keccak256(abi.encode((_types))) == keccak256(abi.encode("Kitty"))) {
             newQuality = newQuality - newQuality % 100 + 99;
     }
     _createResource("NoName", newQuality);
-    _triggerCooldown(myResource);
+    triggerCooldown(myResource);
     }
 
 
-    function refineOnInterface(uint _resourceId, uint _kittyId ) public {
-    uint materialUsed;
-    (,,,,,,,,,,materialUsed) = KittyContract.getKitty(_kittyId);
-    refinedAndMultiply(_resourceId ,materialUsed,"Kitty");
+    function refineOnInterface(uint256 _resourceId, uint256 _idResources ) public {
+    uint256 materialUsed;
+    (,,,,,,,,materialUsed) = KittyContract.getResourcesStats(_idResources);
+    refinedAndMultiply(_resourceId,materialUsed,"Kitty");
 
     
     }

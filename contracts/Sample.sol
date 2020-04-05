@@ -2,6 +2,7 @@
 pragma solidity >=0.4.21 <0.6.0;
 
 import "./Owners.sol";
+import "../node_modules/@openzeppelin/contracts/math/SafeMath.sol";
 
 
 
@@ -22,9 +23,17 @@ struct Resource {
     string name;
     uint quality;
     uint32 rarity;
-    uint32 readyTime;
+    uint256 cooldownTime;
     uint16 stockGain;
     uint16 stockLoss;
+    uint32 readyTime;
+    uint256 extractionTime;
+    uint256 extractionId;
+    uint256 magnetiteId;
+    uint256 hematiteId;
+    uint256 class;
+    uint256 sediments;
+    uint qualityUnits;
 
     }
 
@@ -38,7 +47,8 @@ struct Resource {
 
 /// @dev function to crack the resource stacks
 function _createResource (string memory _name , uint _quality) internal {
-    uint id = resources.push(Resource(_name,_quality ,1 , uint32( now + cooldownTime), 0 , 0) )+1;
+    uint id = resources.push(Resource(_name,_quality ,1 , uint256( now + cooldownTime), 0 , 0, 0, 
+    0, 0, 0, 0, 0, 0, 16) )+1;
     resourceToOwner[id] = msg.sender;
     ownerResourceGain[msg.sender]++;
     emit NewResource(id, _name , _quality);
