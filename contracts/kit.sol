@@ -1,47 +1,10 @@
-/**
- *Submitted for verification at Etherscan.io on 2017-11-28
-*/
+
 pragma solidity >=0.4.21 <0.6.0;
+import "./Owners.sol";
 
 
-/**
- * @title Ownable
- * @dev The Ownable contract has an owner address, and provides basic authorization control
- * functions, this simplifies the implementation of "user permissions".
- */
-contract Ownable {
-  address public owner;
 
 
-  /**
-   * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-   * account.
-   */
-  function Ownable() {
-    owner = msg.sender;
-  }
-
-
-  /**
-   * @dev Throws if called by any account other than the owner.
-   */
-  modifier onlyOwner() {
-    require(msg.sender == owner);
-    _;
-  }
-
-
-  /**
-   * @dev Allows the current owner to transfer control of the contract to a newOwner.
-   * @param newOwner The address to transfer ownership to.
-   */
-  function transferOwnership(address newOwner) onlyOwner {
-    if (newOwner != address(0)) {
-      owner = newOwner;
-    }
-  }
-
-}
 
 
 
@@ -362,7 +325,7 @@ contract KittyBase is KittyAccessControl {
             delete kittyIndexToApproved[_tokenId];
         }
         // Emit the transfer event.
-        Transfer(_from, _to, _tokenId);
+        emit Transfer(_from, _to, _tokenId);
     }
 
     /// @dev An internal method that creates a new kitty and stores it. This
@@ -415,7 +378,7 @@ contract KittyBase is KittyAccessControl {
         require(newKittenId == uint256(uint32(newKittenId)));
 
         // emit the birth event
-        Birth(
+        emit Birth(
             _owner,
             newKittenId,
             uint256(_kitty.magnetiteId),
@@ -425,7 +388,7 @@ contract KittyBase is KittyAccessControl {
 
         // This will assign ownership, and also emit the Transfer event as
         // per ERC721 draft
-        _transfer(0, _owner, newKittenId);
+        _transfer(address(0), _owner, newKittenId);
 
         return newKittenId;
     }
@@ -445,7 +408,7 @@ contract KittyBase is KittyAccessControl {
 ///  it has one function that will return the data as bytes.
 contract ERC721Metadata {
     /// @dev Given a token Id, returns a byte array that is supposed to be converted into string.
-    function getMetadata(uint256 _tokenId, string) public view returns (bytes32[4] buffer, uint256 count) {
+    function getMetadata(uint256 _tokenId, string memory) public view returns (bytes32[4] memory buffer, uint256 count) {
         if (_tokenId == 1) {
             buffer[0] = "Hello World! :D";
             count = 15;
@@ -595,7 +558,7 @@ contract KittyOwnership is KittyBase, ERC721 {
         _approve(_tokenId, _to);
 
         // Emit approval event.
-        Approval(msg.sender, _to, _tokenId);
+        emit Approval(msg.sender, _to, _tokenId);
     }
 
     /// @notice Transfer a Kitty owned by another address, for which the calling address
@@ -651,7 +614,7 @@ contract KittyOwnership is KittyBase, ERC721 {
     ///  expensive (it walks the entire Kitty array looking for cats belonging to owner),
     ///  but it also returns a dynamic array, which is only supported for web3 calls, and
     ///  not contract-to-contract calls.
-    function tokensOfOwner(address _owner) external view returns(uint256[] ownerTokens) {
+    function tokensOfOwner(address _owner) external view returns(uint256[] memory ownerTokens) {
         uint256 tokenCount = balanceOf(_owner);
 
         if (tokenCount == 0) {
@@ -702,8 +665,8 @@ contract KittyOwnership is KittyBase, ERC721 {
     /// @dev Adapted from toString(slice) by @arachnid (Nick Johnson <arachnid@notdot.net>)
     ///  This method is licenced under the Apache License.
     ///  Ref: https://github.com/Arachnid/solidity-stringutils/blob/2f6ca9accb48ae14c66f1437ec50ed19a0616f78/strings.sol
-    function _toString(bytes32[4] _rawBytes, uint256 _stringLength) private view returns (string) {
-        var outputString = new string(_stringLength);
+    function _toString(bytes32[4] memory _rawBytes, uint256 _stringLength) private view returns (string memory) {
+        string memory outputString = new string(_stringLength);
         uint256 outputPtr;
         uint256 bytesPtr;
 
@@ -720,14 +683,14 @@ contract KittyOwnership is KittyBase, ERC721 {
     /// @notice Returns a URI pointing to a metadata package for this token conforming to
     ///  ERC-721 (https://github.com/ethereum/EIPs/issues/721)
     /// @param _tokenId The ID number of the Kitty whose metadata should be returned.
-    function tokenMetadata(uint256 _tokenId, string _preferredTransport) external view returns (string infoUrl) {
-        require(erc721Metadata != address(0));
+    /*function tokenMetadata(uint256 _tokenId, string calldata _preferredTransport) external view returns (string memory infoUrl) {
+        require(erc721Metadata != 0);
         bytes32[4] memory buffer;
         uint256 count;
         (buffer, count) = erc721Metadata.getMetadata(_tokenId, _preferredTransport);
 
         return _toString(buffer, count);
-    }
+    }*/
 }
 
 
@@ -768,7 +731,7 @@ contract KittyBreeding is KittyOwnership {
     /// @dev Checks that a given kitten is able to breed. Requires that the
     ///  current cooldown is finished (for sires) and also checks that there is
     ///  no pending pregnancy.
-    function _isReadyToBreed(Kitty _kit) internal view returns (bool) {
+    function _isReadyToBreed(Kitty storage _kit) internal view returns (bool) {
         // In addition to checking the cooldownEndBlock, we also need to check to see if
         // the cat has a pending birth; there can be some period of time between the end
         // of the pregnacy timer and the birth event.
@@ -823,7 +786,7 @@ contract KittyBreeding is KittyOwnership {
 
     /// @dev Checks to see if a given Kitty is pregnant and (if so) if the gestation
     ///  period has passed.
-    function _isReadyToGiveBirth(Kitty _matron) private view returns (bool) {
+    function _isReadyToGiveBirth(Kitty storage _matron) private view returns (bool) {
         return (_matron.extractionTime != 0) && (_matron.cooldownEndBlock <= uint64(block.number));
     }
 
@@ -953,7 +916,7 @@ contract KittyBreeding is KittyOwnership {
         pregnantKitties++;
 
         // Emit the pregnancy event.
-        Pregnant(kittyIndexToOwner[_magnetiteId], _magnetiteId, _hematiteId, matron.cooldownEndBlock);
+       emit Pregnant(kittyIndexToOwner[_magnetiteId], _magnetiteId, _hematiteId, matron.cooldownEndBlock);
     }
 
     /// @notice Breed a Kitty you own (as matron) with a sire that you own, or for which you
@@ -1059,12 +1022,12 @@ contract KittyBreeding is KittyOwnership {
         pregnantKitties--;
 
         // Send the balance fee to the person who made birth happen.
-        msg.sender.send(autoBirthFee);
+        msg.sender.transfer(autoBirthFee);
 
-        // return the new kitten's ID
-        return kittenId;
+            // return the new kitten's ID
+            return kittenId;
+        }
     }
-}
 
 
 
@@ -1083,7 +1046,8 @@ contract ClockAuctionBase {
     // Represents an auction on an NFT
     struct Auction {
         // Current owner of NFT
-        address seller;
+        address  seller;
+        //payable(seller[index]).transfer(address(this).balance);
         // Price (in wei) at beginning of auction
         uint128 startingPrice;
         // Price (in wei) at end of auction
@@ -1122,7 +1086,7 @@ contract ClockAuctionBase {
     /// @param _tokenId - ID of token whose approval to verify.
     function _escrow(address _owner, uint256 _tokenId) internal {
         // it will throw if transfer fails
-        nonFungibleContract.transferFrom(_owner, this, _tokenId);
+        nonFungibleContract.transferFrom(_owner, address(this), _tokenId);
     }
 
     /// @dev Transfers an NFT owned by this contract to another address.
@@ -1138,14 +1102,14 @@ contract ClockAuctionBase {
     ///  AuctionCreated event.
     /// @param _tokenId The ID of the token to be put on auction.
     /// @param _auction Auction to add.
-    function _addAuction(uint256 _tokenId, Auction _auction) internal {
+    function _addAuction(uint256 _tokenId, Auction storage _auction) internal {
         // Require that all auctions have a duration of
         // at least one minute. (Keeps our math from getting hairy!)
         require(_auction.duration >= 1 minutes);
 
         tokenIdToAuction[_tokenId] = _auction;
 
-        AuctionCreated(
+       emit AuctionCreated(
             uint256(_tokenId),
             uint256(_auction.startingPrice),
             uint256(_auction.endingPrice),
@@ -1154,10 +1118,10 @@ contract ClockAuctionBase {
     }
 
     /// @dev Cancels an auction unconditionally.
-    function _cancelAuction(uint256 _tokenId, address _seller) internal {
+    function _cancelAuction(uint256 _tokenId, address   _seller) internal {
         _removeAuction(_tokenId);
         _transfer(_seller, _tokenId);
-        AuctionCancelled(_tokenId);
+        emit AuctionCancelled(_tokenId);
     }
 
     /// @dev Computes the price and transfers winnings.
@@ -1181,14 +1145,14 @@ contract ClockAuctionBase {
 
         // Grab a reference to the seller before the auction struct
         // gets deleted.
-        address seller = auction.seller;
+        address  seller = auction.seller;
 
         // The bid is good! Remove the auction before sending the fees
         // to the sender so we can't have a reentrancy attack.
         _removeAuction(_tokenId);
 
         // Transfer proceeds to seller (if there are any!)
-        if (price > 0) {
+        /*if (price > 0) {
             // Calculate the auctioneer's cut.
             // (NOTE: _computeCut() is guaranteed to return a
             // value <= price, so this subtraction can't go negative.)
@@ -1203,8 +1167,8 @@ contract ClockAuctionBase {
             // before calling transfer(), and the only thing the seller
             // can DoS is the sale of their own asset! (And if it's an
             // accident, they can call cancelAuction(). )
-            seller.transfer(sellerProceeds);
-        }
+           address(seller).transfer(sellerProceeds);
+        }*/
 
         // Calculate any excess funds included with the bid. If the excess
         // is anything worth worrying about, transfer it back to bidder.
@@ -1218,7 +1182,7 @@ contract ClockAuctionBase {
         msg.sender.transfer(bidExcess);
 
         // Tell the world!
-        AuctionSuccessful(_tokenId, price, msg.sender);
+        emit AuctionSuccessful(_tokenId, price, msg.sender);
 
         return price;
     }
@@ -1351,18 +1315,18 @@ contract Pausable is Ownable {
   /**
    * @dev called by the owner to pause, triggers stopped state
    */
-  function pause() onlyOwner whenNotPaused returns (bool) {
+  function pause() onlyOwner whenNotPaused public returns(bool)  {
     paused = true;
-    Pause();
+   emit Pause();
     return true;
   }
 
   /**
    * @dev called by the owner to unpause, returns to normal state
    */
-  function unpause() onlyOwner whenPaused returns (bool) {
+  function unpause() onlyOwner whenPaused public returns (bool) {
     paused = false;
-    Unpause();
+   emit Unpause();
     return true;
   }
 }
@@ -1383,7 +1347,7 @@ contract ClockAuction is Pausable, ClockAuctionBase {
     ///  the Nonfungible Interface.
     /// @param _cut - percent cut the owner takes on each auction, must be
     ///  between 0-10,000.
-    function ClockAuction(address _nftAddress, uint256 _cut) public {
+    function _ClockAuction(address _nftAddress, uint256 _cut) public {
         require(_cut <= 10000);
         ownerCut = _cut;
 
@@ -1404,7 +1368,7 @@ contract ClockAuction is Pausable, ClockAuctionBase {
             msg.sender == nftAddress
         );
         // We are using this boolean method to make sure that even if one fails it will still work
-        bool res = nftAddress.send(this.balance);
+        //bool res = nftAddress.send(this.balance);
     }
 
     /// @dev Creates and begins a new auction.
@@ -1532,7 +1496,7 @@ contract SiringClockAuction is ClockAuction {
     bool public isSiringClockAuction = true;
 
     // Delegate constructor
-    function SiringClockAuction(address _nftAddr, uint256 _cut) public
+    function _SiringClockAuction(address _nftAddr, uint256 _cut) public
         ClockAuction(_nftAddr, _cut) {}
 
     /// @dev Creates and begins a new auction. Since this function is wrapped,
@@ -1605,7 +1569,7 @@ contract SaleClockAuction is ClockAuction {
     uint256[5] public lastGen0SalePrices;
 
     // Delegate constructor
-    function SaleClockAuction(address _nftAddr, uint256 _cut) public
+    function _SaleClockAuction(address _nftAddr, uint256 _cut) public
         ClockAuction(_nftAddr, _cut) {}
 
     /// @dev Creates and begins a new auction.
@@ -1916,7 +1880,7 @@ contract KittyCore is KittyMinting {
     address public newContractAddress;
 
     /// @notice Creates the main CryptoKitties smart contract instance.
-    function KittyCore() public {
+    function _KittyCore() public {
         // Starts paused.
         paused = true;
 

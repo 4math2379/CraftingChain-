@@ -24,17 +24,17 @@ contract RefiningInterface {
     );
 }
 contract ResourceRefined is Sample , KittyCore {
-    Resourceinterface KittyContract = AnotherInterface(KittyCore);
+    RefiningInterface KittyContract = AnotherInterface(KittyCore);
     RefiningInterface AnotherInterface;
 
     modifier onlyOwnerOf(uint _resourceId) {
-        require(msg.sender == resourceToOwner[_resourceID]);
+        require(msg.sender == resourceToOwner[_resourceId]);
         _;
     }
 
 
     function SetAnotherContractAddress (address _address) external onlyOwner {
-        KittyContract = Resourceinterface(_address);
+        KittyContract = RefiningInterface(_address);
     }
 
     function triggerCooldown (Resource storage _resource ) internal {

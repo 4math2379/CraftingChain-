@@ -36,7 +36,7 @@
     "i": "^0.3.6",
     "inquirer": "^5.2.0",
     "lodash": "^4.17.15",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.3",
     "npm-check-updates": "^3.2.2",
     "preferences": "^1.0.2",
     "rxjs": "^6.5.4",
