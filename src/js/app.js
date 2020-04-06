@@ -43,8 +43,8 @@ else if (window.web3) {
 }
 // If no injected web3 instance is detected, fall back to Ganache
 else {
-  //App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
-  App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/583c67d6aae34e3794a8b5fd9009dc93');
+  App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+  //App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/583c67d6aae34e3794a8b5fd9009dc93');
 }
 web3 = new Web3(App.web3Provider);
 
@@ -85,10 +85,10 @@ web3 = new Web3(App.web3Provider);
     App.contracts.Harvest.deployed().then(function(instance) {
       adoptionInstance = instance;
     
-      return adoptionInstance.getHarvesters.call();
+      return adoptionInstance.ownerOf.call();
     }).then(function(harvesters) {
       for (i = 0; i < harvesters.length; i++) {
-        if (harvesters[i] !== '0x0000000000000000000000000000000000000000') {
+        if (ownerOf[i] !== '0x0000000000000000000000000000000000000000') {
           $('.panel-pet').eq(i).find('button').text('Success').attr('disabled', true);
         }
       }

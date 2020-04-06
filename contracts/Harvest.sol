@@ -3,48 +3,53 @@ pragma solidity >=0.4.21 <0.6.0;
 
 
 import "../node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "../node_modules/@openzeppelin/contracts/math/SafeMath.sol";
+
+import "./ResourceUp.sol";
 
 
 
 
-contract Harvest {
-
-//address of the user during the instance
-address[16] public harvesters;
-mapping (address => uint) public balances;
-mapping(address => mapping(address => uint256)) public allowance;
 
 
+contract Harvest is  ResourceUp, ERC721 {
 
-//identify the resources
-function harvest(uint ressourceId) public returns (uint) {
-    require(ressourceId >= 0 && ressourceId <= 15);
+    using SafeMath for uint256;
 
+mapping (uint => address) resourceApproval;
 
+function balanceOf(address _owner) public view returns (uint256 _balance) {
+    return ownerResourceGain[_owner];
+}
 
-    harvesters[ressourceId] = msg.sender;
+function ownerOf(uint256 _tokenId) public view returns (address _owner) {
+    return resourceToOwner[_tokenId];
+}
 
-    return ressourceId;
+function _transfer(address _from, address _to, uint256 _tokenId) private {
+    ownerResourceGain[_to] = ownerResourceGain[_to].add(1);
+    ownerResourceGain[msg.sender] = ownerResourceGain[msg.sender].sub(1);
+    resourceToOwner[_tokenId] = _to;
+    emit Transfer(_from, _to, _tokenId);
+}
 
+function transfer(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
+    transfer(msg.sender, _to, _tokenId);
     
+}
 
+function approve(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
+    resourceApproval[_tokenId] = _to;
+    emit Approval(msg.sender, _to, _tokenId);
+}
 
-
-    
-
+function harvest(uint256 _tokenId) public {
+    require(resourceApproval[_tokenId] == msg.sender);
+    address owner = ownerOf(_tokenId);
+    _transfer(owner, msg.sender, _tokenId);
 }
 
 
-
-
-
-
-//getHarvester function in order to update all ressources status and place it inside the metamask wallet provider.
-
-function getHarvesters() public view returns (address[16] memory) {
-    return harvesters;
-
-    }
 
 }
 

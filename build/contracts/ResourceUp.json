@@ -1,0 +1,2409 @@
+{
+  "contractName": "ResourceUp",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "resourceId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "quality",
+          "type": "uint256"
+        }
+      ],
+      "name": "NewResource",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "SetAnotherContractAddress",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_resourceId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_Newname",
+          "type": "string"
+        }
+      ],
+      "name": "changeName",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_resourceId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_newQualityUnits",
+          "type": "uint256"
+        }
+      ],
+      "name": "changeQualityUnits",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        }
+      ],
+      "name": "createResourceStack",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getResourcesStats",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "isRefiningInProcess",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "isReady",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "cooldownTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "extractionTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "extractionId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "magnetiteId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "hematiteId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "class",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sediments",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "getTheResourceToOwner",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "newContractAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address payable",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_resourceId",
+          "type": "uint256"
+        }
+      ],
+      "name": "rarityUp",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_resourceId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_idResources",
+          "type": "uint256"
+        }
+      ],
+      "name": "refineOnInterface",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "resourceToOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "resources",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "quality",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint32",
+          "name": "rarity",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "cooldownTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "stockGain",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint16",
+          "name": "stockLoss",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint32",
+          "name": "readyTime",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "extractionTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "extractionId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "magnetiteId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "hematiteId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "class",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sediments",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "qualityUnits",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_fee",
+          "type": "uint256"
+        }
+      ],
+      "name": "setRarityFee",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_resourceId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_targetId",
+          "type": "uint256"
+        }
+      ],
+      "name": "setUp",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"resourceId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"quality\",\"type\":\"uint256\"}],\"name\":\"NewResource\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"SetAnotherContractAddress\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_resourceId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_Newname\",\"type\":\"string\"}],\"name\":\"changeName\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_resourceId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_newQualityUnits\",\"type\":\"uint256\"}],\"name\":\"changeQualityUnits\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"createResourceStack\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"getResourcesStats\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"isRefiningInProcess\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isReady\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"cooldownTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"extractionTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"extractionId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"magnetiteId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"hematiteId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"class\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"sediments\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"getTheResourceToOwner\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"newContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address payable\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_resourceId\",\"type\":\"uint256\"}],\"name\":\"rarityUp\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_resourceId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_idResources\",\"type\":\"uint256\"}],\"name\":\"refineOnInterface\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"resourceToOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"resources\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"quality\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"rarity\",\"type\":\"uint32\"},{\"internalType\":\"uint256\",\"name\":\"cooldownTime\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"stockGain\",\"type\":\"uint16\"},{\"internalType\":\"uint16\",\"name\":\"stockLoss\",\"type\":\"uint16\"},{\"internalType\":\"uint32\",\"name\":\"readyTime\",\"type\":\"uint32\"},{\"internalType\":\"uint256\",\"name\":\"extractionTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"extractionId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"magnetiteId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"hematiteId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"class\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"sediments\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"qualityUnits\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_fee\",\"type\":\"uint256\"}],\"name\":\"setRarityFee\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_resourceId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_targetId\",\"type\":\"uint256\"}],\"name\":\"setUp\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"rarityUp(uint256)\":{\"details\":\"this function is set by using RefinedResource.sol contract in order to gain better resources\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/ResourceUp.sol\":\"ResourceUp\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/Owners.sol\":{\"keccak256\":\"0x6ccd187c6716d4f9f68d78cf8b9e34fc8832741cc9a1567af512437a0b96be3e\",\"urls\":[\"bzz-raw://f7de65df30d0c5fb2d04e1bb6942f9a77ee313e5121ce207257280966a3e5b51\",\"dweb:/ipfs/QmeuQzuLJvZqKGTVGsjySWc1Viqbyb3SLXrcS7RMLBDht2\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/ResourceHelper.sol\":{\"keccak256\":\"0x89d348ee55cac44e39511db079533087efe39d91e073aa9485fc13993aacb9cb\",\"urls\":[\"bzz-raw://e73629cf0ee93149ebf7446b8c9ef576dcc162a0ffc42bd90c84d308d83f3f05\",\"dweb:/ipfs/QmW5jZrYmenBkGxNeKWM4qU2NiojkX2ywjzhQZNPugzCFf\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/ResourceRefined.sol\":{\"keccak256\":\"0xe434ac5a240ff3d49376c567c369f49dc7fd0dd91bd26458bb6f60acc2dc7975\",\"urls\":[\"bzz-raw://81f6831c345f57f37eaad82aacb94e364a3cee991c73ad8f6a73f667299a11fc\",\"dweb:/ipfs/Qmd2FhCf1zemCyCebSMgt126rF9hAE6S52T9ecLkjYqJfc\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/ResourceUp.sol\":{\"keccak256\":\"0xd41a6ab961aa631eb7475d50d964b5e0b6faaa4b1f549f3f39d5376da6f00c20\",\"urls\":[\"bzz-raw://68ff532ffba545b1c295fcd70e3c989d69696870d5e2ac156475bfdb554a1a42\",\"dweb:/ipfs/QmWgvxFZLUshyHCBEzDmiXPBUpQVX1jgVxn1gB4dEPdJWu\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/Sample.sol\":{\"keccak256\":\"0xa7b5bcb0d7c179d75066a65b5b7e03c0ad845b0d6427f8fb81dd86010dfe9d2d\",\"urls\":[\"bzz-raw://b8f5a7bea7b1d16729385856c63c8aa430b2130042ae46a46ecc3897e1918d2f\",\"dweb:/ipfs/QmSazus7THaCCSqCLUPrA5TyR6TLg1g5ciALGTvZaJTBJC\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/kit.sol\":{\"keccak256\":\"0xa7bc404ca2b9798f7ccc660e4afa7ff13a5982f8a1b6259b2cf39b4e2ad63beb\",\"urls\":[\"bzz-raw://1ec572203be3463e4243aeb9eac1eab95bb978959edadeaf2441be52917a0360\",\"dweb:/ipfs/Qma7ZKNYzFNk91EQfT3KPFNCzqqSgHY2ViJpx8SSxGgAwE\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/node_modules/@openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0xdde0d59d1c2d2e2e61ff62c689b068983af52c3c486a68837a41a35537369943\",\"urls\":[\"bzz-raw://2455383154257ca93fd5ace564bc9277eefa80bd189fc5ebacf264d2f1dd78b9\",\"dweb:/ipfs/QmQa4cKgxVW2NiQCYjQ7EB3v11L2u1NWSYjfduDwbonfck\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/node_modules/@openzeppelin/contracts/drafts/Counters.sol\":{\"keccak256\":\"0x5be8533c5950173dc2b77b75108fae6e6c5449aedadde3385ba457394aad2384\",\"urls\":[\"bzz-raw://d429fb04f5b31d909dc759d0f88e28055b80b4dd43e5def4dffc947fa0609229\",\"dweb:/ipfs/QmaY9idX5CwLLtjjTQAdiiaDSrncgafkatUZXTbbajpz8b\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/node_modules/@openzeppelin/contracts/introspection/ERC165.sol\":{\"keccak256\":\"0x01aedbf24e121a744262e04c7815b2a4c8ce604dee4829c5cff00943a594ccf3\",\"urls\":[\"bzz-raw://999ab32a6498d8ad8db61d47c3774aae2ff919acceebe2aeb50879bef62642c3\",\"dweb:/ipfs/QmephAYF5hoymu9qCFK6mURM2kZJCxU4ntUb4KTf1miVPT\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/node_modules/@openzeppelin/contracts/introspection/IERC165.sol\":{\"keccak256\":\"0xe0ed10f53955c35eecb02724538650a155aa940be3f0a54cd3bde6c6b0c6e48c\",\"urls\":[\"bzz-raw://7dcfda88e3225987245908c3296f3559752647036804325ebfaa9fd1545161c3\",\"dweb:/ipfs/QmXxx5rHfLL57zdgyyyG9MMv4XGN7bpVSc2MuDcaCgto6u\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/node_modules/@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x640b6dee7a4b830bdfd52b5031a07fc2b12209f5b2e29e5d364a7d37f69d8076\",\"urls\":[\"bzz-raw://31113152e1ddb78fe7a4197f247591ca894e93f916867beb708d8e747b6cc74f\",\"dweb:/ipfs/QmbZaJyXdpsYGykVhHH9qpVGQg9DGCxE2QufbCUy3daTgq\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol\":{\"keccak256\":\"0x1a1c02bc2487c763ad240f6b6440ec9dcb84870879aea3ed2a6b9cd300b637c7\",\"urls\":[\"bzz-raw://e6351696020fecf1c1b09437a2961cbdc3e1579238a9573b8577b58af463eeb6\",\"dweb:/ipfs/QmTg7UxUcuENko38JL2Pb2aqXkWgqW1xPDbJwmfo3RVrrV\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x680c11bc8173eef7d5db843baaf64ce499476de2c172f6aea631dbee54bcd2e6\",\"urls\":[\"bzz-raw://0f314963ab26fb65c6f364d57900f0f1aa8f6aeb4396e327e5e5c646815f060e\",\"dweb:/ipfs/Qmf6eSUtRUF4YDxGyhQq7TVDYzuHcYEvk9Us3RVy5iZQVH\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol\":{\"keccak256\":\"0x042048c375daca04b31e31c91bbae912b84b5eb818c4e31b2deb530fd2305342\",\"urls\":[\"bzz-raw://d877a87c5e29b9ffca3e334378058c051a4e012fd3635039681003a9376baf1f\",\"dweb:/ipfs/QmR45snf93cFXtB71TZcmoGy9DbcMha8CqgkDKaLvhjXZK\"]},\"/C/Users/Rahma John/Documents/dev/CraftingChain-/node_modules/@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x9ab1ed2b8d4d78d221031d679e2dd0074009fcd8dd7ce3dfeb985c2b57d92588\",\"urls\":[\"bzz-raw://8dc12b8b168ea07eb4c0d494bb1e1c7f6167018be867d8200fe3354acf665c3a\",\"dweb:/ipfs/Qmdk15Rg6zKBGXwdAt7NvFfwc6RPUW2LcsP3xjXzUfy3BT\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// solium-disable linebreak-style\r\npragma solidity >=0.4.21 <0.6.0;\r\n\r\nimport \"./ResourceHelper.sol\";\r\n\r\ncontract ResourceUp is ResourceHelper {\r\nuint randNonce = 0;\r\nuint resourceUpProba = 70;\r\n\r\n\r\n/*function randMod(uint _modulus) internal returns(uint) {\r\n    randNonce++;\r\n    return uint(keccak256( (abi.encodePacked(now, msg.sender,randNonce))) % uint(_modulus));\r\n}*/\r\n\r\nfunction setUp(uint _resourceId, uint _targetId) external onlyOwnerOf(_resourceId) {\r\n    Resource storage myResource = resources[_resourceId];\r\n    Resource storage anotherResource = resources[_targetId];\r\n    uint rand = 100;\r\n    if (rand <= resourceUpProba) {\r\n    myResource.stockGain++;\r\n    myResource.rarity++;\r\n    anotherResource.stockLoss++;\r\n    refinedAndMultiply(_resourceId, anotherResource.quality, \"resource\");\r\n    } else {\r\n    myResource.stockLoss++;\r\n    anotherResource.stockGain++;\r\n    triggerCooldown(myResource);\r\n        }\r\n    }\r\n}\r\n",
+  "sourcePath": "C:\\Users\\Rahma John\\Documents\\dev\\CraftingChain-\\contracts\\ResourceUp.sol",
+  "ast": {
+    "absolutePath": "/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/ResourceUp.sol",
+    "exportedSymbols": {
+      "ResourceUp": [
+        685
+      ]
+    },
+    "id": 686,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 606,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:32:5"
+      },
+      {
+        "absolutePath": "/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/ResourceHelper.sol",
+        "file": "./ResourceHelper.sol",
+        "id": 607,
+        "nodeType": "ImportDirective",
+        "scope": 686,
+        "sourceUnit": 410,
+        "src": "71:30:5",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 608,
+              "name": "ResourceHelper",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 409,
+              "src": "128:14:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ResourceHelper_$409",
+                "typeString": "contract ResourceHelper"
+              }
+            },
+            "id": 609,
+            "nodeType": "InheritanceSpecifier",
+            "src": "128:14:5"
+          }
+        ],
+        "contractDependencies": [
+          252,
+          409,
+          604,
+          861,
+          1288
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 685,
+        "linearizedBaseContracts": [
+          685,
+          409,
+          604,
+          1288,
+          861,
+          252
+        ],
+        "name": "ResourceUp",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 612,
+            "name": "randNonce",
+            "nodeType": "VariableDeclaration",
+            "scope": 685,
+            "src": "146:18:5",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 610,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "146:4:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30",
+              "id": 611,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "163:1:5",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_0_by_1",
+                "typeString": "int_const 0"
+              },
+              "value": "0"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 615,
+            "name": "resourceUpProba",
+            "nodeType": "VariableDeclaration",
+            "scope": 685,
+            "src": "167:25:5",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 613,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "167:4:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3730",
+              "id": 614,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "190:2:5",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_70_by_1",
+                "typeString": "int_const 70"
+              },
+              "value": "70"
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 683,
+              "nodeType": "Block",
+              "src": "461:473:5",
+              "statements": [
+                {
+                  "assignments": [
+                    626
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 626,
+                      "name": "myResource",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 683,
+                      "src": "468:27:5",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                        "typeString": "struct Sample.Resource"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 625,
+                        "name": "Resource",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 737,
+                        "src": "468:8:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                          "typeString": "struct Sample.Resource"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 630,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 627,
+                      "name": "resources",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 748,
+                      "src": "498:9:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Resource_$737_storage_$dyn_storage",
+                        "typeString": "struct Sample.Resource storage ref[] storage ref"
+                      }
+                    },
+                    "id": 629,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 628,
+                      "name": "_resourceId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 617,
+                      "src": "508:11:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "498:22:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Resource_$737_storage",
+                      "typeString": "struct Sample.Resource storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "468:52:5"
+                },
+                {
+                  "assignments": [
+                    632
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 632,
+                      "name": "anotherResource",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 683,
+                      "src": "527:32:5",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                        "typeString": "struct Sample.Resource"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 631,
+                        "name": "Resource",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 737,
+                        "src": "527:8:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                          "typeString": "struct Sample.Resource"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 636,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 633,
+                      "name": "resources",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 748,
+                      "src": "562:9:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Resource_$737_storage_$dyn_storage",
+                        "typeString": "struct Sample.Resource storage ref[] storage ref"
+                      }
+                    },
+                    "id": 635,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 634,
+                      "name": "_targetId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 619,
+                      "src": "572:9:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "562:20:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Resource_$737_storage",
+                      "typeString": "struct Sample.Resource storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "527:55:5"
+                },
+                {
+                  "assignments": [
+                    638
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 638,
+                      "name": "rand",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 683,
+                      "src": "589:9:5",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 637,
+                        "name": "uint",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "589:4:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 640,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "hexValue": "313030",
+                    "id": 639,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "601:3:5",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_100_by_1",
+                      "typeString": "int_const 100"
+                    },
+                    "value": "100"
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "589:15:5"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 643,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 641,
+                      "name": "rand",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 638,
+                      "src": "615:4:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "id": 642,
+                      "name": "resourceUpProba",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 615,
+                      "src": "623:15:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "615:23:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 681,
+                    "nodeType": "Block",
+                    "src": "818:109:5",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 670,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "UnaryOperation",
+                          "operator": "++",
+                          "prefix": false,
+                          "src": "825:22:5",
+                          "subExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 667,
+                              "name": "myResource",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 626,
+                              "src": "825:10:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            },
+                            "id": 669,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "stockLoss",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 720,
+                            "src": "825:20:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint16",
+                              "typeString": "uint16"
+                            }
+                          },
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint16",
+                            "typeString": "uint16"
+                          }
+                        },
+                        "id": 671,
+                        "nodeType": "ExpressionStatement",
+                        "src": "825:22:5"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 675,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "UnaryOperation",
+                          "operator": "++",
+                          "prefix": false,
+                          "src": "854:27:5",
+                          "subExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 672,
+                              "name": "anotherResource",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 632,
+                              "src": "854:15:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            },
+                            "id": 674,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "stockGain",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 718,
+                            "src": "854:25:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint16",
+                              "typeString": "uint16"
+                            }
+                          },
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint16",
+                            "typeString": "uint16"
+                          }
+                        },
+                        "id": 676,
+                        "nodeType": "ExpressionStatement",
+                        "src": "854:27:5"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 678,
+                              "name": "myResource",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 626,
+                              "src": "904:10:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            ],
+                            "id": 677,
+                            "name": "triggerCooldown",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 490,
+                            "src": "888:15:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Resource_$737_storage_ptr_$returns$__$",
+                              "typeString": "function (struct Sample.Resource storage pointer)"
+                            }
+                          },
+                          "id": 679,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "888:27:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 680,
+                        "nodeType": "ExpressionStatement",
+                        "src": "888:27:5"
+                      }
+                    ]
+                  },
+                  "id": 682,
+                  "nodeType": "IfStatement",
+                  "src": "611:316:5",
+                  "trueBody": {
+                    "id": 666,
+                    "nodeType": "Block",
+                    "src": "640:172:5",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 647,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "UnaryOperation",
+                          "operator": "++",
+                          "prefix": false,
+                          "src": "647:22:5",
+                          "subExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 644,
+                              "name": "myResource",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 626,
+                              "src": "647:10:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            },
+                            "id": 646,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "stockGain",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 718,
+                            "src": "647:20:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint16",
+                              "typeString": "uint16"
+                            }
+                          },
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint16",
+                            "typeString": "uint16"
+                          }
+                        },
+                        "id": 648,
+                        "nodeType": "ExpressionStatement",
+                        "src": "647:22:5"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 652,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "UnaryOperation",
+                          "operator": "++",
+                          "prefix": false,
+                          "src": "676:19:5",
+                          "subExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 649,
+                              "name": "myResource",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 626,
+                              "src": "676:10:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            },
+                            "id": 651,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "rarity",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 714,
+                            "src": "676:17:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint32",
+                              "typeString": "uint32"
+                            }
+                          },
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "id": 653,
+                        "nodeType": "ExpressionStatement",
+                        "src": "676:19:5"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 657,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "UnaryOperation",
+                          "operator": "++",
+                          "prefix": false,
+                          "src": "702:27:5",
+                          "subExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 654,
+                              "name": "anotherResource",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 632,
+                              "src": "702:15:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            },
+                            "id": 656,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "stockLoss",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 720,
+                            "src": "702:25:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint16",
+                              "typeString": "uint16"
+                            }
+                          },
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint16",
+                            "typeString": "uint16"
+                          }
+                        },
+                        "id": 658,
+                        "nodeType": "ExpressionStatement",
+                        "src": "702:27:5"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 660,
+                              "name": "_resourceId",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 617,
+                              "src": "755:11:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 661,
+                                "name": "anotherResource",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 632,
+                                "src": "768:15:5",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                  "typeString": "struct Sample.Resource storage pointer"
+                                }
+                              },
+                              "id": 662,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "quality",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 712,
+                              "src": "768:23:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "7265736f75726365",
+                              "id": 663,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "793:10:5",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_b61e407d61f27eefb9ebf3cf25f5c7560bafafe518410eb7c781777da1102bd3",
+                                "typeString": "literal_string \"resource\""
+                              },
+                              "value": "resource"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              {
+                                "typeIdentifier": "t_stringliteral_b61e407d61f27eefb9ebf3cf25f5c7560bafafe518410eb7c781777da1102bd3",
+                                "typeString": "literal_string \"resource\""
+                              }
+                            ],
+                            "id": 659,
+                            "name": "refinedAndMultiply",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 578,
+                            "src": "736:18:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_uint256_$_t_string_memory_ptr_$returns$__$",
+                              "typeString": "function (uint256,uint256,string memory)"
+                            }
+                          },
+                          "id": 664,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "736:68:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 665,
+                        "nodeType": "ExpressionStatement",
+                        "src": "736:68:5"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 684,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 622,
+                    "name": "_resourceId",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 617,
+                    "src": "448:11:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                ],
+                "id": 623,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 621,
+                  "name": "onlyOwnerOf",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 460,
+                  "src": "436:11:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$_t_uint256_$",
+                    "typeString": "modifier (uint256)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "436:24:5"
+              }
+            ],
+            "name": "setUp",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 620,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 617,
+                  "name": "_resourceId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 684,
+                  "src": "393:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 616,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "393:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 619,
+                  "name": "_targetId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 684,
+                  "src": "411:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 618,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "411:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "392:34:5"
+            },
+            "returnParameters": {
+              "id": 624,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "461:0:5"
+            },
+            "scope": 685,
+            "src": "378:556:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 686,
+        "src": "105:832:5"
+      }
+    ],
+    "src": "35:904:5"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/ResourceUp.sol",
+    "exportedSymbols": {
+      "ResourceUp": [
+        685
+      ]
+    },
+    "id": 686,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 606,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:32:5"
+      },
+      {
+        "absolutePath": "/C/Users/Rahma John/Documents/dev/CraftingChain-/contracts/ResourceHelper.sol",
+        "file": "./ResourceHelper.sol",
+        "id": 607,
+        "nodeType": "ImportDirective",
+        "scope": 686,
+        "sourceUnit": 410,
+        "src": "71:30:5",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 608,
+              "name": "ResourceHelper",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 409,
+              "src": "128:14:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ResourceHelper_$409",
+                "typeString": "contract ResourceHelper"
+              }
+            },
+            "id": 609,
+            "nodeType": "InheritanceSpecifier",
+            "src": "128:14:5"
+          }
+        ],
+        "contractDependencies": [
+          252,
+          409,
+          604,
+          861,
+          1288
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 685,
+        "linearizedBaseContracts": [
+          685,
+          409,
+          604,
+          1288,
+          861,
+          252
+        ],
+        "name": "ResourceUp",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 612,
+            "name": "randNonce",
+            "nodeType": "VariableDeclaration",
+            "scope": 685,
+            "src": "146:18:5",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 610,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "146:4:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30",
+              "id": 611,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "163:1:5",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_0_by_1",
+                "typeString": "int_const 0"
+              },
+              "value": "0"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 615,
+            "name": "resourceUpProba",
+            "nodeType": "VariableDeclaration",
+            "scope": 685,
+            "src": "167:25:5",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 613,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "167:4:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3730",
+              "id": 614,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "190:2:5",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_70_by_1",
+                "typeString": "int_const 70"
+              },
+              "value": "70"
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 683,
+              "nodeType": "Block",
+              "src": "461:473:5",
+              "statements": [
+                {
+                  "assignments": [
+                    626
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 626,
+                      "name": "myResource",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 683,
+                      "src": "468:27:5",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                        "typeString": "struct Sample.Resource"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 625,
+                        "name": "Resource",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 737,
+                        "src": "468:8:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                          "typeString": "struct Sample.Resource"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 630,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 627,
+                      "name": "resources",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 748,
+                      "src": "498:9:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Resource_$737_storage_$dyn_storage",
+                        "typeString": "struct Sample.Resource storage ref[] storage ref"
+                      }
+                    },
+                    "id": 629,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 628,
+                      "name": "_resourceId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 617,
+                      "src": "508:11:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "498:22:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Resource_$737_storage",
+                      "typeString": "struct Sample.Resource storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "468:52:5"
+                },
+                {
+                  "assignments": [
+                    632
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 632,
+                      "name": "anotherResource",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 683,
+                      "src": "527:32:5",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                        "typeString": "struct Sample.Resource"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 631,
+                        "name": "Resource",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 737,
+                        "src": "527:8:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                          "typeString": "struct Sample.Resource"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 636,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 633,
+                      "name": "resources",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 748,
+                      "src": "562:9:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Resource_$737_storage_$dyn_storage",
+                        "typeString": "struct Sample.Resource storage ref[] storage ref"
+                      }
+                    },
+                    "id": 635,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 634,
+                      "name": "_targetId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 619,
+                      "src": "572:9:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "562:20:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Resource_$737_storage",
+                      "typeString": "struct Sample.Resource storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "527:55:5"
+                },
+                {
+                  "assignments": [
+                    638
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 638,
+                      "name": "rand",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 683,
+                      "src": "589:9:5",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 637,
+                        "name": "uint",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "589:4:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 640,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "hexValue": "313030",
+                    "id": 639,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "601:3:5",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_100_by_1",
+                      "typeString": "int_const 100"
+                    },
+                    "value": "100"
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "589:15:5"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 643,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 641,
+                      "name": "rand",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 638,
+                      "src": "615:4:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "id": 642,
+                      "name": "resourceUpProba",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 615,
+                      "src": "623:15:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "615:23:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 681,
+                    "nodeType": "Block",
+                    "src": "818:109:5",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 670,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "UnaryOperation",
+                          "operator": "++",
+                          "prefix": false,
+                          "src": "825:22:5",
+                          "subExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 667,
+                              "name": "myResource",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 626,
+                              "src": "825:10:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            },
+                            "id": 669,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "stockLoss",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 720,
+                            "src": "825:20:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint16",
+                              "typeString": "uint16"
+                            }
+                          },
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint16",
+                            "typeString": "uint16"
+                          }
+                        },
+                        "id": 671,
+                        "nodeType": "ExpressionStatement",
+                        "src": "825:22:5"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 675,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "UnaryOperation",
+                          "operator": "++",
+                          "prefix": false,
+                          "src": "854:27:5",
+                          "subExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 672,
+                              "name": "anotherResource",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 632,
+                              "src": "854:15:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            },
+                            "id": 674,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "stockGain",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 718,
+                            "src": "854:25:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint16",
+                              "typeString": "uint16"
+                            }
+                          },
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint16",
+                            "typeString": "uint16"
+                          }
+                        },
+                        "id": 676,
+                        "nodeType": "ExpressionStatement",
+                        "src": "854:27:5"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 678,
+                              "name": "myResource",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 626,
+                              "src": "904:10:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            ],
+                            "id": 677,
+                            "name": "triggerCooldown",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 490,
+                            "src": "888:15:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Resource_$737_storage_ptr_$returns$__$",
+                              "typeString": "function (struct Sample.Resource storage pointer)"
+                            }
+                          },
+                          "id": 679,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "888:27:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 680,
+                        "nodeType": "ExpressionStatement",
+                        "src": "888:27:5"
+                      }
+                    ]
+                  },
+                  "id": 682,
+                  "nodeType": "IfStatement",
+                  "src": "611:316:5",
+                  "trueBody": {
+                    "id": 666,
+                    "nodeType": "Block",
+                    "src": "640:172:5",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 647,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "UnaryOperation",
+                          "operator": "++",
+                          "prefix": false,
+                          "src": "647:22:5",
+                          "subExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 644,
+                              "name": "myResource",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 626,
+                              "src": "647:10:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            },
+                            "id": 646,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "stockGain",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 718,
+                            "src": "647:20:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint16",
+                              "typeString": "uint16"
+                            }
+                          },
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint16",
+                            "typeString": "uint16"
+                          }
+                        },
+                        "id": 648,
+                        "nodeType": "ExpressionStatement",
+                        "src": "647:22:5"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 652,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "UnaryOperation",
+                          "operator": "++",
+                          "prefix": false,
+                          "src": "676:19:5",
+                          "subExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 649,
+                              "name": "myResource",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 626,
+                              "src": "676:10:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            },
+                            "id": 651,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "rarity",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 714,
+                            "src": "676:17:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint32",
+                              "typeString": "uint32"
+                            }
+                          },
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint32",
+                            "typeString": "uint32"
+                          }
+                        },
+                        "id": 653,
+                        "nodeType": "ExpressionStatement",
+                        "src": "676:19:5"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 657,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "UnaryOperation",
+                          "operator": "++",
+                          "prefix": false,
+                          "src": "702:27:5",
+                          "subExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 654,
+                              "name": "anotherResource",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 632,
+                              "src": "702:15:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                "typeString": "struct Sample.Resource storage pointer"
+                              }
+                            },
+                            "id": 656,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "stockLoss",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 720,
+                            "src": "702:25:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint16",
+                              "typeString": "uint16"
+                            }
+                          },
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint16",
+                            "typeString": "uint16"
+                          }
+                        },
+                        "id": 658,
+                        "nodeType": "ExpressionStatement",
+                        "src": "702:27:5"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 660,
+                              "name": "_resourceId",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 617,
+                              "src": "755:11:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 661,
+                                "name": "anotherResource",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 632,
+                                "src": "768:15:5",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Resource_$737_storage_ptr",
+                                  "typeString": "struct Sample.Resource storage pointer"
+                                }
+                              },
+                              "id": 662,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "quality",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 712,
+                              "src": "768:23:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "7265736f75726365",
+                              "id": 663,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "793:10:5",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_b61e407d61f27eefb9ebf3cf25f5c7560bafafe518410eb7c781777da1102bd3",
+                                "typeString": "literal_string \"resource\""
+                              },
+                              "value": "resource"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              {
+                                "typeIdentifier": "t_stringliteral_b61e407d61f27eefb9ebf3cf25f5c7560bafafe518410eb7c781777da1102bd3",
+                                "typeString": "literal_string \"resource\""
+                              }
+                            ],
+                            "id": 659,
+                            "name": "refinedAndMultiply",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 578,
+                            "src": "736:18:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_uint256_$_t_string_memory_ptr_$returns$__$",
+                              "typeString": "function (uint256,uint256,string memory)"
+                            }
+                          },
+                          "id": 664,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "736:68:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 665,
+                        "nodeType": "ExpressionStatement",
+                        "src": "736:68:5"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 684,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 622,
+                    "name": "_resourceId",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 617,
+                    "src": "448:11:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                ],
+                "id": 623,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 621,
+                  "name": "onlyOwnerOf",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 460,
+                  "src": "436:11:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$_t_uint256_$",
+                    "typeString": "modifier (uint256)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "436:24:5"
+              }
+            ],
+            "name": "setUp",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 620,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 617,
+                  "name": "_resourceId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 684,
+                  "src": "393:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 616,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "393:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 619,
+                  "name": "_targetId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 684,
+                  "src": "411:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 618,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "411:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "392:34:5"
+            },
+            "returnParameters": {
+              "id": 624,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "461:0:5"
+            },
+            "scope": 685,
+            "src": "378:556:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 686,
+        "src": "105:832:5"
+      }
+    ],
+    "src": "35:904:5"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.21",
+  "updatedAt": "2020-04-06T00:13:51.345Z",
+  "devdoc": {
+    "methods": {
+      "rarityUp(uint256)": {
+        "details": "this function is set by using RefinedResource.sol contract in order to gain better resources"
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "newOwner": "The address to transfer ownership to."
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

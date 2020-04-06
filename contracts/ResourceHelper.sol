@@ -4,7 +4,7 @@ pragma solidity >=0.4.21 <0.6.0;
 import "./ResourceRefined.sol";
 
 
-contract  ResourceHelper is ResourceRefined {
+ contract  ResourceHelper is ResourceRefined {
     //cost ether for rarityUp fee
 uint rarityForFee = 0.001 ether;
 

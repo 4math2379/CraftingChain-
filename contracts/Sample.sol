@@ -8,7 +8,7 @@ import "../node_modules/@openzeppelin/contracts/math/SafeMath.sol";
 
 
 
-contract Sample is Ownable  {
+ contract Sample is Ownable  {
 /// @dev here it is all the Token ERC 721 spec by an event
 event NewResource (uint resourceId, string name , uint quality);
 
