@@ -88,7 +88,7 @@ web3 = new Web3(App.web3Provider);
       return adoptionInstance.ownerOf.call();
     }).then(function(harvesters) {
       for (i = 0; i < harvesters.length; i++) {
-        if (ownerOf[i] !== '0x0000000000000000000000000000000000000000') {
+        if (ownerOf[i] !== '0xe5F977686C4857f370F919858B1F720FA8e9EDe6') {
           $('.panel-pet').eq(i).find('button').text('Success').attr('disabled', true);
         }
       }
