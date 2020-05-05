@@ -20,7 +20,7 @@ import "../node_modules/@openzeppelin/contracts/math/SafeMath.sol";
  * functions, this simplifies the implementation of "user permissions".
  */
 contract Ownable {
-  address payable public owner;
+  address  public owner;
 
   event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
@@ -43,7 +43,7 @@ contract Ownable {
    * @dev Allows the current owner to transfer control of the contract to a newOwner.
    * @param newOwner The address to transfer ownership to.
    */
-  function transferOwnership(address payable newOwner) public onlyOwner {
+  function transferOwnership(address newOwner) public onlyOwner {
     require(newOwner != address(0));
     emit OwnershipTransferred(owner, newOwner);
     owner = newOwner;
@@ -247,7 +247,7 @@ contract ResourceRefined is Sample , CoreRefined {
 
 contract  ResourceHelper is ResourceRefined {
     //cost ether for rarityUp fee
-uint rarityForFee = 0.0001 ether;
+uint rarityForFee = 0.0000001 ether;
 
     //modify rarity !=not LEVEL
     modifier aboveCostLevel (uint _rarity ,uint _resourceId){
@@ -257,9 +257,9 @@ uint rarityForFee = 0.0001 ether;
 
 
     //function to withdraw FIX ISSUE
-   function withdraw() external onlyOwner {
-    address owner = owner();
-    _owner.transfer(address(this).balance);
+   modifier onlyOwner() {
+    require(msg.sender != owner);
+    _;
   }
 
     //rarityfee for resources improvements
