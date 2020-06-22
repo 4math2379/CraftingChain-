@@ -57,6 +57,7 @@ web3 = new Web3(App.web3Provider);
       var HarvestArtifact = data;
       App.contracts.Harvest = TruffleContract(HarvestArtifact);
       App.contracts.Sample
+      
     
       // Set the provider for our contract
       App.contracts.Harvest.setProvider(App.web3Provider);
@@ -108,6 +109,7 @@ web3 = new Web3(App.web3Provider);
 
     var petId = parseInt($(event.target).data('id'));
 
+
     var adoptionInstance;
 
 web3.eth.getAccounts(function(error, accounts) {
@@ -118,9 +120,12 @@ web3.eth.getAccounts(function(error, accounts) {
   var account = accounts[0];
 
   App.contracts.Harvest.deployed().then(function(instance) {
+    
     adoptionInstance = instance;
+    let send = web3.eth.sendTransaction({from: account,to:contract_address, value:web3.toWei(0.05, "ether")});
 
-    return adoptionInstance.harvest(petId, {from: account});
+
+    return adoptionInstance.harvest(petId, {gas : 21000,from: account});
   }).then(function(result) {
     return App.markAdopted();
   }).catch(function(err) {

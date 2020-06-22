@@ -23685,7 +23685,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.0",
-  "updatedAt": "2020-06-22T13:53:37.763Z",
+  "updatedAt": "2020-06-22T17:34:27.481Z",
   "devdoc": {
     "methods": {
       "transferOwnership(address)": {
