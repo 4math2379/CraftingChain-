@@ -43,7 +43,7 @@ else if (window.web3) {
 }
 // If no injected web3 instance is detected, fall back to Ganache
 else {
-  App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+  App.web3Provider = new Web3.providers.HttpProvider('HTTP://127.0.0.1:7545');
   //App.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/583c67d6aae34e3794a8b5fd9009dc93');
 }
 web3 = new Web3(App.web3Provider);
@@ -111,6 +111,8 @@ web3 = new Web3(App.web3Provider);
 
 
     var adoptionInstance;
+    var contract_address;
+
 
 web3.eth.getAccounts(function(error, accounts) {
   if (error) {
@@ -120,9 +122,14 @@ web3.eth.getAccounts(function(error, accounts) {
   var account = accounts[0];
 
   App.contracts.Harvest.deployed().then(function(instance) {
+
+    //var account = accounts[0];
     
     adoptionInstance = instance;
-    let send = web3.eth.sendTransaction({from: account,to:contract_address, value:web3.toWei(0.05, "ether")});
+    contract_address = '0x8416CAB04018467e843D165dA35e26acd8318405';
+    
+    //sending transaction function to build.
+    web3.eth.accounts({from: account,to:contract_address, value:web3.toWei(0.05, "ether")});
 
 
     return adoptionInstance.harvest(petId, {gas : 21000,from: account});
