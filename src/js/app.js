@@ -56,7 +56,7 @@ web3 = new Web3(App.web3Provider);
       // Get the necessary contract artifact file and instantiate it with truffle-contract
       var HarvestArtifact = data;
       App.contracts.Harvest = TruffleContract(HarvestArtifact);
-      App.contracts.Sample
+      //App.contracts.Sample
       
     
       // Set the provider for our contract
@@ -80,16 +80,16 @@ web3 = new Web3(App.web3Provider);
 
 
 
-  markAdopted: function(harvesters, account) {
+  markAdopted: function(balanceOf, account) {
     var adoptionInstance;
 
     App.contracts.Harvest.deployed().then(function(instance) {
       adoptionInstance = instance;
     
-      return adoptionInstance.ownerOf.call();
-    }).then(function(harvesters) {
-      for (i = 0; i < harvesters.length; i++) {
-        if (ownerOf[i] !== '0x0000000000000000000000000000000000000000') {
+      return adoptionInstance.balanceOf.call();
+    }).then(function(ownerResourceGain) {
+      for (i = 0; i < ownerResourceGain.length; i++) {
+        if (ownerResourceGain[i] !== '0x0000000000000000000000000000000000000000') {
           $('.panel-pet').eq(i).find('button').text('Success').attr('disabled', true);
         }
       }
@@ -126,7 +126,7 @@ web3.eth.getAccounts(function(error, accounts) {
     //var account = accounts[0];
     
     adoptionInstance = instance;
-    contract_address = '0x8416CAB04018467e843D165dA35e26acd8318405';
+    contract_address = '0xf81cFAd3EaC860c547D8E1c0AE3339A7869984C9';
     
     //sending transaction function to build.
     web3.eth.accounts({from: account,to:contract_address, value:web3.toWei(0.05, "ether")});
