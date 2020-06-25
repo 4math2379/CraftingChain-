@@ -100,7 +100,7 @@ Inside this contract the randomized resources stats will be generated.
 
 *Adventurer.sol* this contract will be instanced for the user in order to store all items [address] he gonna trade with, by storing resources a *Staking* of that resources will take effect. [Harvester.sol(soon)].
 
-*Crafter.sol* this contract instance element for player who prefer craft and sell items.  it will interact with others smart contract to make an economic cycle.
+
 
 
 
