@@ -249,8 +249,9 @@ contract  ResourceHelper is ResourceRefined {
     //cost ether for rarityUp fee
 uint rarityForFee = 0.0000001 ether;
 
+
     //modify rarity !=not LEVEL
-    modifier aboveCostLevel (uint _rarity ,uint _resourceId){
+    modifier aboveCostLevel (uint _rarity, uint _resourceId){
         require(resources[_resourceId].rarity >= _rarity);
         _;
     }
