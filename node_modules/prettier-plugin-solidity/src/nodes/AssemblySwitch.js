@@ -1,19 +1,22 @@
 const {
   doc: {
-    builders: { concat, hardline, indent, join }
+    builders: { concat, hardline }
   }
 } = require('prettier/standalone');
 
+const printSeparatedList = require('./print-separated-list');
+
 const AssemblySwitch = {
-  print: ({ path, print }) => {
-    const doc = join(hardline, path.map(print, 'cases'));
-    return concat([
+  print: ({ path, print }) =>
+    concat([
       'switch ',
       path.call(print, 'expression'),
-      indent(hardline),
-      indent(doc)
-    ]);
-  }
+      printSeparatedList(path.map(print, 'cases'), {
+        firstSeparator: hardline,
+        separator: hardline,
+        lastSeparator: ''
+      })
+    ])
 };
 
 module.exports = AssemblySwitch;

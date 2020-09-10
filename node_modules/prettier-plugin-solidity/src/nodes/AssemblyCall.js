@@ -1,31 +1,22 @@
 const {
   doc: {
-    builders: { concat, group, indent, join, line, softline }
+    builders: { concat }
   }
 } = require('prettier/standalone');
 
+const printSeparatedList = require('./print-separated-list');
+
 const AssemblyCall = {
-  print: ({ node, path, print }) => {
-    if (node.arguments.length === 0) {
-      return node.functionName;
-    }
-    return concat([
-      node.functionName,
-      '(',
-      group(
-        concat([
-          indent(
-            concat([
-              softline,
-              join(concat([',', line]), path.map(print, 'arguments'))
-            ])
-          ),
-          softline
+  print: ({ node, path, print, options }) =>
+    node.arguments.length === 0 &&
+    options.originalText.charAt(options.locEnd(node)) !== ')'
+      ? node.functionName
+      : concat([
+          node.functionName,
+          '(',
+          printSeparatedList(path.map(print, 'arguments')),
+          ')'
         ])
-      ),
-      ')'
-    ]);
-  }
 };
 
 module.exports = AssemblyCall;

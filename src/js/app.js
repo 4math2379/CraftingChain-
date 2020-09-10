@@ -46,8 +46,8 @@ else if (window.web3) {
 }
 // If no injected web3 instance is detected, fall back to Ganache
 else {
-  App.web3Provider = new Web3.providers.HttpProvider('HTTP://127.0.0.1:7545');
-  //App.web3Provider = new Web3.providers.HttpProvider(process.env.MNEMONIC, "https://ropsten.infura.io/v3/" + process.env.INFURA_API_KEY );
+  //App.web3Provider = new Web3.providers.HttpProvider('HTTP://127.0.0.1:7545');
+  App.web3Provider = new Web3.providers.HttpProvider(process.env.MNEMONIC, "https://ropsten.infura.io/v3/" + process.env.INFURA_API_KEY );
 }
   //web3 = new Web3(App.web3Provider);
 
@@ -197,7 +197,7 @@ web3.eth.getAccounts(function(error, accounts) {
 
     
     adoptionInstance = instance;
-    contract_address = '0x129f8Fa34390f1230FF6A2aE7350cD1c1aacBebA';
+    contract_address = '0x81D9a0Ccaa9a867bbC7c687bDf8A0C53a063B81e';
     //sending transaction function to build.
     web3.eth.sendTransaction({from: contract_address,to:accounts, data: getData });
 

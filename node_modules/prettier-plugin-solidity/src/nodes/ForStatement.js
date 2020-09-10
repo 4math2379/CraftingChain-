@@ -1,41 +1,45 @@
 const {
   doc: {
-    builders: { concat, group, indent, line, softline }
+    builders: { concat, group, indent, line }
   }
 } = require('prettier/standalone');
 
-const printBody = (node, path, print) => {
-  if (node.body.type === 'Block') {
-    return concat([' ', path.call(print, 'body')]);
-  }
+const printSeparatedList = require('./print-separated-list');
 
-  return group(indent(concat([line, path.call(print, 'body')])));
-};
+const initExpression = (node, path, print) =>
+  node.initExpression ? path.call(print, 'initExpression') : '';
+
+const conditionExpression = (node, path, print) =>
+  node.conditionExpression ? path.call(print, 'conditionExpression') : '';
+
+const loopExpression = (node, path, print) =>
+  node.loopExpression.expression ? path.call(print, 'loopExpression') : '';
+
+const printBody = (node, path, print) =>
+  node.body.type === 'Block'
+    ? concat([' ', path.call(print, 'body')])
+    : group(indent(concat([line, path.call(print, 'body')])));
 
 const ForStatement = {
   print: ({ node, path, print }) =>
     concat([
-      group(
-        concat([
-          'for (',
-          indent(
-            concat([
-              softline,
-              node.initExpression ? path.call(print, 'initExpression') : '',
-              ';',
-              line,
-              node.conditionExpression
-                ? path.call(print, 'conditionExpression')
-                : '',
-              ';',
-              line,
-              path.call(print, 'loopExpression')
-            ])
-          ),
-          softline,
-          ')'
-        ])
+      'for (',
+      printSeparatedList(
+        [
+          initExpression(node, path, print),
+          conditionExpression(node, path, print),
+          loopExpression(node, path, print)
+        ],
+        {
+          separator:
+            node.initExpression ||
+            node.conditionExpression ||
+            node.loopExpression.expression
+              ? concat([';', line])
+              : ';'
+        }
       ),
+      ')',
       printBody(node, path, print)
     ])
 };

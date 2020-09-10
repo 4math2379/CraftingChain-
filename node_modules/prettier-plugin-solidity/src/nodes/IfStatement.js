@@ -1,8 +1,10 @@
 const {
   doc: {
-    builders: { concat, group, hardline, indent, line, softline }
+    builders: { concat, group, hardline, indent, line }
   }
 } = require('prettier/standalone');
+
+const printSeparatedItem = require('./print-separated-item');
 
 const printTrueBody = (node, path, print) => {
   if (node.trueBody.type === 'Block') {
@@ -15,16 +17,10 @@ const printTrueBody = (node, path, print) => {
   );
 };
 
-const printFalseBody = (node, path, print) => {
-  if (
-    node.falseBody.type === 'Block' ||
-    node.falseBody.type === 'IfStatement'
-  ) {
-    return concat([' ', path.call(print, 'falseBody')]);
-  }
-
-  return group(indent(concat([line, path.call(print, 'falseBody')])));
-};
+const printFalseBody = (node, path, print) =>
+  node.falseBody.type === 'Block' || node.falseBody.type === 'IfStatement'
+    ? concat([' ', path.call(print, 'falseBody')])
+    : group(indent(concat([line, path.call(print, 'falseBody')])));
 
 const printElse = (node, path, print) => {
   if (node.falseBody) {
@@ -42,12 +38,7 @@ const IfStatement = {
   print: ({ node, path, print }) =>
     concat([
       group(
-        concat([
-          'if (',
-          indent(concat([softline, path.call(print, 'condition')])),
-          softline,
-          ')'
-        ])
+        concat(['if (', printSeparatedItem(path.call(print, 'condition')), ')'])
       ),
       printTrueBody(node, path, print),
       printElse(node, path, print)

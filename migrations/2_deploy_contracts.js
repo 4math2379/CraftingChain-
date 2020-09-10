@@ -1,11 +1,11 @@
 
 
-const Harvest = artifacts.require("Harvest");
+const RessourcesChainToken = artifacts.require("RessourcesChainToken");
 
 
 
 module.exports =  function(deployer) {
-  deployer.deploy(Harvest)
+  deployer.deploy(RessourcesChainToken)
   
   
 };

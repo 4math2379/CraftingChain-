@@ -2,6 +2,8 @@
 
 ![alt text](https://image.flaticon.com/icons/svg/2708/2708997.svg) 
 
+# Update 10 september 
+*completely change the smartContract. Moving to Open Zeppelin was slow, because i have to improve my skill with ERC721 Tokens*
 
 ## Blockchain game concerning harvesting resources and craft epic object with it.
 
@@ -14,7 +16,7 @@ A decentralized exchange inside the dApp will be add later after release.
 
 
 
-### Tasks during the game development [update 1st April 2020]
+### Tasks during the game development [update September 2020]
 
 - [ ]  **Professions and location need to be implemented.**
 - [ ]  **Game resources has been created**.
@@ -25,14 +27,14 @@ A decentralized exchange inside the dApp will be add later after release.
 - [x]  **20 August 2018 moved to truffle Framework.** 🍩
 - [ ]  **update the Smart contract, looking to move to ~~VueJS~~ or React**
 - [ ]  **adding ERC721 for all contracts**
-- [ ]  **Apply inheritance for each step of the Smart contract**
+- [ ]  ~~**Apply inheritance for each step of the Smart contract**~~
 - [ ]  **Audit security with MythX**
 - [ ]  **Ledger NanoS/NanoX integration and => allow staking ?**
 
 
 # How it will work :
 ## Harvester Smart contract
-This contract [Harvester.sol] consist to sample resources, by buying it.
+This contract [RessourcesChainToken.sol] consist to sample resources, by buying it.
 
 
 **Resources** are the main asset (Token) in **CraftingChain`**.
@@ -44,7 +46,7 @@ With Harvester user have **abilities**, the *Harvest* can have the success to ex
 
 
 #### **RCT**
-During the *Sample.sol* instance by Web3, user can sample a resource by buying it, i will become a **RCT**.
+During the Web3 instance, user can sample a resource by buying it, i will become a **RCT**.
 
 Resource Chain Token, is a ERC 721 non unique Token it's mean it will have a unique ID and his own **Resources** stats. 
 
@@ -54,7 +56,7 @@ Those stats will be generated at random who will be improved by the **Facilities
 
  
 
-#### **CCT**  
+#### **CCT**  (In development)
 Crafting Chain Token, is an ERC 721 non unique Token it's mean it will have a unique ID. [cappedStats]. 
 
 Those tokens can be traded,sold or used to *Craft* a **tool**, it's mean inside the dApp user can craft by buying it if they have the required resources inside her/his wallet.
@@ -95,7 +97,7 @@ Those stats alter the result of the Tools crafted. Better stats give the opportu
 
 ### Using ERC721 for adding this features.
 
-*Harvest.sol* is the main contract on the Blockchain who will set and get data ( content as resources).
+*RessourcesChainToken.sol* is the main contract on the Blockchain who will set and get data ( content as resources).
 Inside this contract the randomized resources stats will be generated.
 
 *Adventurer.sol* this contract will be instanced for the user in order to store all items [address] he gonna trade with, by storing resources a *Staking* of that resources will take effect. [Harvester.sol(soon)].

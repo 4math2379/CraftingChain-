@@ -1,8 +1,12 @@
 
 const HDWalletProvider = require("truffle-hdwallet-provider");
-
+require("babel-register")({
+  ignore: /node_modules\/(?!zeppelin-solidity)/
+});
+require("babel-polyfill");
 
 require('dotenv').config()
+
 
 
 module.exports = {
@@ -28,10 +32,18 @@ module.exports = {
   ropsten: {
     provider: () => new HDWalletProvider(process.env.MNEMONIC, "https://ropsten.infura.io/v3/" + process.env.INFURA_API_KEY ),
       network_id: '3',
-      host:"localhost",
+      from:"0x2Cd58C1FeedD4516c17290B1CFD101e89f031446",
       port:3000,
-      gas: 5000000,
+      gas: 4012388,
       gasPrice: 6
+    },
+    rinkby: {
+      provider: () => new HDWalletProvider(process.env.MNEMONIC, "https://rinkeby.infura.io/v3/" + process.env.INFURA_API_KEY),
+      network_id: '3',
+      from: "0x2Cd58C1FeedD4516c17290B1CFD101e89f031446",
+      port : 3000,
+      gas : 4012388,
+      gasPrice:6
     }   
   }
 

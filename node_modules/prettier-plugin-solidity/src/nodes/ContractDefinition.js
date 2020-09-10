@@ -1,46 +1,44 @@
 const {
   doc: {
-    builders: { concat, group, indent, join, line }
+    builders: { concat, group, line, hardline }
   }
 } = require('prettier/standalone');
+
+const printSeparatedItem = require('./print-separated-item');
+const printSeparatedList = require('./print-separated-list');
 const printPreservingEmptyLines = require('./print-preserving-empty-lines');
+const printComments = require('./print-comments');
 
-const inheritance = (node, path, print) => {
-  if (node.baseContracts.length > 0) {
-    return concat([
-      ' is',
-      indent(
+const inheritance = (node, path, print) =>
+  node.baseContracts.length > 0
+    ? concat([
+        ' is',
+        printSeparatedList(path.map(print, 'baseContracts'), {
+          firstSeparator: line
+        })
+      ])
+    : line;
+
+const body = (node, path, options, print) =>
+  node.subNodes.length > 0 || node.comments
+    ? printSeparatedItem(
         concat([
-          line,
-          join(concat([',', line]), path.map(print, 'baseContracts'))
-        ])
+          printPreservingEmptyLines(path, 'subNodes', options, print),
+          printComments(node, path, options)
+        ]),
+        { firstSeparator: hardline }
       )
-    ]);
-  }
-  return '';
-};
-
-const body = (node, path, options, print) => {
-  if (node.subNodes.length > 0) {
-    return concat([
-      indent(line),
-      indent(printPreservingEmptyLines(path, 'subNodes', options, print)),
-      line
-    ]);
-  }
-  return '';
-};
+    : '';
 
 const ContractDefinition = {
   print: ({ node, options, path, print }) =>
     concat([
       group(
         concat([
-          node.kind,
+          node.kind === 'abstract' ? 'abstract contract' : node.kind,
           ' ',
           node.name,
           inheritance(node, path, print),
-          line,
           '{'
         ])
       ),
