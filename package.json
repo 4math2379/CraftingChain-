@@ -22,7 +22,7 @@
   "license": "ISC",
   "dependencies": {
     "@cityofzion/neon-js": "^4.8.0",
-    "@openzeppelin/contracts": "^2.5.0",
+    "@openzeppelin/contracts": "^4.4.2",
     "axios": "^0.19.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
