@@ -47,7 +47,7 @@
     "npm-check-updates": "^3.2.2",
     "preferences": "^1.0.2",
     "rxjs": "^6.5.5",
-    "simple-git": "^1.132.0",
+    "simple-git": "^3.3.0",
     "solhint": "^1.5.1",
     "sweetalert2": "^8.19.0",
     "touch": "^3.1.0",
